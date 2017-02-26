@@ -18,8 +18,8 @@ if (file_exists('config.php')) {
 
 
 // Project constants
-define('PROJECT_NAME', 'halo');
-define('PROJECT_NATIVE_LANGUAGE', 'en');
+define('PROJECT_NAME', 'Aasta Tegija');
+define('PROJECT_NATIVE_LANGUAGE', 'et');
 define('DEFAULT_CONTROLLER', 'forms');
 
 // Load app
