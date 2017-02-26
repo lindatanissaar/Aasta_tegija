@@ -20,7 +20,7 @@ if (file_exists('config.php')) {
 // Project constants
 define('PROJECT_NAME', 'halo');
 define('PROJECT_NATIVE_LANGUAGE', 'en');
-define('DEFAULT_CONTROLLER', 'welcome');
+define('DEFAULT_CONTROLLER', 'forms');
 
 // Load app
 require 'system/classes/Application.php';
