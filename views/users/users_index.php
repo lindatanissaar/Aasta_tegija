@@ -14,16 +14,11 @@
         <table class="table table-bordered">
             <tr>
                 <th>Username</th>
-                <td><input type="text" name="data[username]" placeholder="Jaan"/></td>
+                <td><input type="text" name="data[user_name]" placeholder="Jaan"/></td>
             </tr>
             <tr>
                 <th>Password</th>
-                <td><input type="text" name="data[password]" placeholder="******"/></td>
-            </tr>
-            <tr>
-                <th>Active</th>
-                <td><input type="checkbox"
-                           name="data[active]" checked="checked"/>
+                    <td><input type="text" name="data[password]" placeholder="******"/></td>
             </tr>
             <tr>
                 <th>Email</th>
