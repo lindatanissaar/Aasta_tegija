@@ -1,5 +1,7 @@
 <?php namespace Halo;
 
+use \Aastategija\Tests;
+
 class forms extends Controller
 {
     public $requires_auth = false;
@@ -7,6 +9,7 @@ class forms extends Controller
 
     function index()
     {
+        $foo = Tests::add();
         $this->forms = get_all("SELECT * FROM forms");
     }
 

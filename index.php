@@ -19,7 +19,7 @@ if (file_exists('config.php')) {
 
 // Project constants
 define('PROJECT_NAME', 'Aasta Tegija');
-define('PROJECT_NATIVE_LANGUAGE', 'ee');
+define('PROJECT_NATIVE_LANGUAGE', 'xx');
 define('DEFAULT_CONTROLLER', 'forms');
 
 // Load app
