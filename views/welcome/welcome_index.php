@@ -63,3 +63,5 @@ server by jQuery and server's response will be written to the box below.
     <input type="submit" value="Post"/>
 </form>
 
+<br>
+

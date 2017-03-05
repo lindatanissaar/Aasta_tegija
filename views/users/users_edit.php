@@ -4,21 +4,18 @@
         You are not an administrator.
     </div>
     <?php exit(); endif; ?>
-<h1>User '<?= $user['username'] ?>'</h1>
+<h1>User '<?= $user['user_name'] ?>'</h1>
 <form id="form" method="post">
     <table class="table table-bordered">
         <tr>
             <th>Username</th>
-            <td><input type="text" name="data[username]" value="<?= $user['username'] ?>"/></td>
+            <td><input type="text" name="data[user_name]" value="<?= $user['user_name'] ?>"/></td>
         </tr>
         <tr>
             <th>Password</th>
             <td><input type="text" name="data[password]" value="<?= $user['password'] ?>"/></td>
         </tr>
-        <tr>
-            <th>Active</th>
-            <td><input type="checkbox" name="data[active]" <?= $user['active'] != 0 ? 'checked="checked"' : '' ?>/>
-        </tr>
+
         <tr>
             <th>Email</th>
             <td><input type="text" name="data[email]" value="<?= $user['email'] ?>">
@@ -31,7 +28,7 @@
 
     <!-- CANCEL -->
     <button class="btn btn-default"
-            onclick="window.location.href = 'users/view/<?= $user['user_id'] ?>/<?= $user['username'] ?>'">
+            onclick="window.location.href = 'users/view/<?= $user['user_id'] ?>/<?= $user['user_name'] ?>'">
         Cancel
     </button>
 

@@ -3,6 +3,7 @@
 <head>
     <base href="<?= BASE_URL ?>">
     <meta charset="utf-8">
+    <link rel="stylesheet" href="assets/css/main.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -17,7 +18,27 @@
     <style>
         body {
             min-height: 2000px !important;
-            padding-top: 70px;
+            font-family: Calibri;
+            font-size: 16px;
+            line-height: 160%;
+            text-align: justify;
+            background-color: #f7f6f6;
+        }
+
+        .header {
+            background-color: #FFE600;
+            height: 80px;
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+        }
+
+        img, h4 {
+            display: inline-block;
+        }
+
+        h4 {
+            margin-left: 20%;
+            padding-top: 10px;
         }
     </style>
 
@@ -36,18 +57,16 @@
 
 <body>
 
-
+    <div class="header">
+        <img src="Aasta_tegija/assets/images/KHK_logo.jpg" />
+        <h4>Tartu Kutsehariduskeskus <br>IKT osakond</h4>
     </div>
-</div>
-
-<div class="container">
 
     <!-- Main component for a primary marketing message or call to action -->
     <?php if (!file_exists("views/$controller/{$controller}_$action.php")) error_out('The view <i>views/' . $controller . '/' . $controller . '_' . $action . '.php</i> does not exist. Create that file.'); ?>
     <?php @require "views/$controller/{$controller}_$action.php"; ?>
 
-</div>
-<!-- /container -->
+
 
 
 <!-- Bootstrap core JavaScript
