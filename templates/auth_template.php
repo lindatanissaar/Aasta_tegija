@@ -89,14 +89,20 @@
             background-color: #ffffff;
             margin-top: 90px;
         }
+
+        img {
+            width: 274px;
+            height: 70px;
+            margin-bottom: 20px;
+            margin-left: 20px;
+        }
     </style>
 </head>
 
 <body>
 
     <div class="header">
-        <img src="Aasta_tegija/assets/images/KHK_logo.jpg" />
-        <h4>Tartu Kutsehariduskeskus <br>IKT osakond</h4>
+        <img src="assets/images/KHK_logo.png" />
     </div>
 
     <form class="form-signin" method="post">

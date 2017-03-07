@@ -1,11 +1,9 @@
 <style>
-    #btnSubmit {
+    #logOutBtn {
 
     }
 </style>
 <?php if ($auth->is_admin): ?>
-
-<a class="btn btn-primary btn-lg" href="logout">Logi välja</a>
 
 <h3>Add new user</h3>
 

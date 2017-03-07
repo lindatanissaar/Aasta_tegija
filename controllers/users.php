@@ -9,7 +9,7 @@
 class users extends Controller
 {
     public $requires_auth = true;
-    public $template = 'forms';
+    public $template = 'users';
 
     function index()
     {
