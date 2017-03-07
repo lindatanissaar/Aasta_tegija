@@ -7,7 +7,6 @@
  */
 class Auth
 {
-
     public $logged_in = FALSE;
 
     function __construct()
@@ -18,7 +17,6 @@ class Auth
                                FROM users
                                WHERE user_id = '{$_SESSION['user_id']}'");
             $this->load_user_data($user);
-
         }
     }
 
@@ -66,7 +64,7 @@ class Auth
 
         // Attempt to retrieve user data from database
         $user = get_first("SELECT * 
-                           FROM users
+                           FROM  users
                            WHERE email = '$email'
                            AND deleted = 0");
 

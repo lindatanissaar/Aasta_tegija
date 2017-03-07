@@ -1,12 +1,12 @@
-<h3>Users</h3>
-<ul class="list-group">
-    <?php foreach ($users as $user): ?>
-        <li class="list-group-item"><a
-                href="users/view/<?= $user['user_id'] ?>/<?= $user['username'] ?>"><?= $user['username'] ?></a></li>
-    <?php endforeach ?>
-</ul>
+<style>
+    #btnSubmit {
 
+    }
+</style>
 <?php if ($auth->is_admin): ?>
+
+<a class="btn btn-primary btn-lg" href="logout">Logi välja</a>
+
 <h3>Add new user</h3>
 
 <form method="post" id="form">

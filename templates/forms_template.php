@@ -40,6 +40,10 @@
             margin-left: 20%;
             padding-top: 10px;
         }
+
+        img {
+
+        }
     </style>
 
 
@@ -58,7 +62,7 @@
 <body>
 
     <div class="header">
-        <img src="Aasta_tegija/assets/images/KHK_logo.jpg" />
+        <img src="" />
         <h4>Tartu Kutsehariduskeskus <br>IKT osakond</h4>
     </div>
 

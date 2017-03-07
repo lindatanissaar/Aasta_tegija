@@ -3,6 +3,7 @@
 class welcome extends Controller
 {
     public $requires_auth = false;
+    public $template = 'forms';
 
     function index()
     {
@@ -13,7 +14,6 @@ class welcome extends Controller
     function AJAX_enterantsLogin()
 
     {
-
         if (isset($_POST["pin"])) {
             $pin = $_POST["pin"];
 

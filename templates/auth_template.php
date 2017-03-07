@@ -12,7 +12,28 @@
 
     <style>
         body {
-            padding-top: 50px;
+            min-height: 2000px !important;
+            font-family: Calibri;
+            font-size: 16px;
+            line-height: 160%;
+            text-align: justify;
+            background-color: #f7f6f6;
+        }
+
+        .header {
+            background-color: #FFE600;
+            height: 80px;
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+        }
+
+        img, h4 {
+            display: inline-block;
+        }
+
+        h4 {
+            margin-left: 20%;
+            padding-top: 10px;
         }
 
         .form-signin {
@@ -66,17 +87,21 @@
 
         form.form-signin {
             background-color: #ffffff;
+            margin-top: 90px;
         }
     </style>
 </head>
 
 <body>
 
-<div class="container">
+    <div class="header">
+        <img src="Aasta_tegija/assets/images/KHK_logo.jpg" />
+        <h4>Tartu Kutsehariduskeskus <br>IKT osakond</h4>
+    </div>
 
     <form class="form-signin" method="post">
 
-        <h2 class="form-signin-heading"><?= __('Please sign in') ?></h2>
+        <h2 class="form-signin-heading"><?= __('Logi sisse') ?></h2>
 
         <?php if (isset($errors)) {
             foreach ($errors as $error): ?>
@@ -87,7 +112,7 @@
         } ?>
 
 
-        <label for="user"><?= __('Username') ?></label>
+        <label for="user"><?= __('Email') ?></label>
 
         <div class="input-group">
             <span class="input-group-addon"><i class="icon-user"></i></span>
@@ -96,7 +121,7 @@
 
         <br/>
 
-        <label for="pass"><?= __('Password') ?></label>
+        <label for="pass"><?= __('Parool') ?></label>
 
         <div class="input-group">
             <span class="input-group-addon"><i class="icon-key"></i></span>
@@ -105,11 +130,10 @@
 
         <br/>
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit"><?= __('Sign in') ?></button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit"><?= __('Logi sisse') ?></button>
     </form>
 
-</div>
-<!-- /container -->
+
 
 
 <!-- Bootstrap core JavaScript
