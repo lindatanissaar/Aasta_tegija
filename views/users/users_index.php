@@ -1,5 +1,5 @@
 <style>
-    #form, #btnSubmit {
+    #form, #btnSubmit, #btnSubmit2 {
         width: 40%;
     }
 
@@ -53,6 +53,47 @@
             });
         });
     </script>
+
+
+    <h3>Lisa uus admin</h3>
+
+    <div id="alertText"></div>
+
+    <form method="post" id="form">
+        <form id="form" method="post">
+            <form role="form" name="myForm">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Email" name="email" id="email">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Parool" name="password" id="password">
+                </div>
+            </form>
+
+            <input type="button" id="btnSubmit2" class="btn btn-primary btn-block" value="Lisa!">
+        </form>
+
+        <script>
+
+            $(function () {
+                $('#btnSubmit2').click(function () {
+                    var email = $("#email").val();
+                    var password = $("#password").val();
+                    $.post("users/addingAdmins", {
+                        email: email,
+                        password: password
+                    }).done(function (data) {
+                        if (data == "success") {
+                            location.href = "users"
+                            document.getElementById('alertText').innerHTML = "Uus admin lisatud"
+
+                        } else {
+                            alert("Error!")
+                        }
+                    });
+                });
+            });
+        </script>
     <?php endif; ?>
 
 

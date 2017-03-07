@@ -24,7 +24,7 @@
     <p class="help-block">Type the desired password and click Get hash</p>
 
     <form action="#">
-        <input type="text" name="password">
+        <input type="text" id="password">
         <input type="button" id="btnGeneratePasswordHash" value="Get hash">
         <div id="divHash" class="text-center">
             <span id="txtHash" onfocus="this.select()"></span>
@@ -140,7 +140,7 @@
 
     $('#btnGeneratePasswordHash').on('click', function (e) {
 
-        $.post('halo/generate_password_hash', {password: this.value}, function (res) {
+        $.post('halo/generate_password_hash', {password: $("#password").val()}, function (res) {
             $('#txtHash').html(res);
             $('#divHash').slideDown();
 

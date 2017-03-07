@@ -33,6 +33,29 @@ class users extends Controller
 
     }
 
+    function AJAX_addingAdmins()
+
+    {
+        if (isset($_POST["email"]) && isset($_POST["password"])) {
+            $email = $_POST["email"];
+            $password = $_POST["password"];
+
+            // Hash the password
+            $password = password_hash($password, PASSWORD_DEFAULT);
+
+            $conn = mysqli_connect("127.0.0.1", "root", "", "Aasta_tegija");
+            insert('users',[
+                'email'=>$email,
+                'password'=>$password,
+                'is_admin'=>1
+            ]);
+
+
+            echo "success";
+        }
+
+    }
+
     function index()
     {
         $this->users = get_all("SELECT * FROM users WHERE deleted=0");
