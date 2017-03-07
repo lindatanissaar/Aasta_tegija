@@ -11,6 +11,28 @@ class users extends Controller
     public $requires_auth = true;
     public $template = 'users';
 
+
+    function AJAX_addingEnterants()
+
+    {
+        if (isset($_POST["pin"]) && isset($_POST["firstName"]) && isset($_POST["lastName"])) {
+            $pin = $_POST["pin"];
+            $firstName = $_POST["firstName"];
+            $lastName = $_POST["lastName"];
+
+            $conn = mysqli_connect("127.0.0.1", "root", "", "Aasta_tegija");
+            insert('users',[
+                'firstName'=>$firstName,
+                'lastName'=>$lastName,
+                'pin'=>$pin
+            ]);
+
+
+            echo "success";
+        }
+
+    }
+
     function index()
     {
         $this->users = get_all("SELECT * FROM users WHERE deleted=0");

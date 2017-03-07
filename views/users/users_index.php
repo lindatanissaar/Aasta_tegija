@@ -1,31 +1,58 @@
 <style>
-    #logOutBtn {
+    #form, #btnSubmit {
+        width: 40%;
+    }
 
+    #alertText{
+        color: red;
     }
 </style>
 <?php if ($auth->is_admin): ?>
 
-<h3>Add new user</h3>
+<h3>Lisa õpilane</h3>
+
+<div id="alertText"></div>
 
 <form method="post" id="form">
     <form id="form" method="post">
-        <table class="table table-bordered">
-            <tr>
-                <th>Username</th>
-                <td><input type="text" name="data[user_name]" placeholder="Jaan"/></td>
-            </tr>
-            <tr>
-                <th>Password</th>
-                    <td><input type="text" name="data[password]" placeholder="******"/></td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td><input type="text" name="data[email]" placeholder="em@ail.ee">
-            </tr>
-        </table>
+        <form role="form" name="myForm">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Eesnimi" name="firstName" id="firstName">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Perenimi" name="lastName" id="lastName">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Isikukood" name="pin" id="pin">
+            </div>
+        </form>
 
-        <button class="btn btn-primary" type="submit">Add</button>
+        <input type="button" id="btnSubmit" class="btn btn-primary btn-block" value="Lisa!">
     </form>
+
+    <script>
+
+        $(function () {
+            $('#btnSubmit').click(function () {
+                var firstName = $("#firstName").val();
+                var lastName = $("#lastName").val();
+                var pin = $("#pin").val();
+                $.post("users/addingEnterants", {
+                    firstName: firstName,
+                    lastName: lastName,
+                    pin: pin
+                }).done(function (data) {
+                    if (data == "success") {
+                        location.href = "users"
+                        document.getElementById('alertText').innerHTML = "Uus kasutaja lisatud"
+
+                    } else {
+                        alert("Error!")
+                    }
+                });
+            });
+        });
+    </script>
     <?php endif; ?>
 
 
