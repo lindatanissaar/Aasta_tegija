@@ -1,39 +1,92 @@
 <style>
-    #form, #btnSubmit, #btnSubmit2 {
-        width: 40%;
+    .content {
+        margin-right: 7%;
+        margin-left: 7%;
+    }
+    .btn-lg {
+        background-color: #0054a6;
+        border-color: #0054a6;
+        text-align: center;
+        color: white;
+        margin-top: 30px;
+        margin-right: 60px;
+        margin-bottom: 60px;
     }
 
-    #alertText{
+    .btn-lg:hover {
+        background-color: #003a73;
+        border-color: #003a73;
+        color: white;
+    }
+
+    .btn-lg:active {
+        background-color: #003a73;
+        border-color: #003a73;
+        color: white;
+    }
+
+    #btnSubmit{
+        background-color: #0054a6;
+        border-color: #0054a6;
+        color: white;
+    }
+
+    .modal-header {
+        background-color: #FFE600;
+    }
+
+    #alertText1{
         color: red;
+    }
+    input[name="firstName"], input[name="lastName"]{
+        text-transform: capitalize;
     }
 </style>
 <?php if ($auth->is_admin): ?>
 
-<h3>Lisa õpilane</h3>
+    <div class="content">
 
-<div id="alertText"></div>
+<button type="button" class="btn btn-lg" data-toggle="modal" data-target="#popUpWindow1">Lisa õpilane</button>
 
-<form method="post" id="form">
-    <form id="form" method="post">
-        <form role="form" name="myForm">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Eesnimi" name="firstName" id="firstName">
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Perenimi" name="lastName" id="lastName">
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Isikukood" name="pin" id="pin">
-            </div>
-        </form>
+<div class="modal fade" id="popUpWindow1">
+    <div class="modal-dialog">
+        <div class="modal-content">
 
-        <input type="button" id="btnSubmit" class="btn btn-primary btn-block" value="Lisa!">
-    </form>
+            <!-- header -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3 class="modal-title">Õpilase lisamine</h3>
+                <p id="alertText1"></p>
+            </div>
+
+            <!-- body (form) -->
+            <div class="modal-body">
+                <form role="form"  name="myForm">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Eesnimi" name="firstName" id="firstName" >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Perenimi" name="lastName" id="lastName">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Isikukood" name="pin" id="pin">
+                    </div>
+                </form>
+            </div>
+
+            <!-- button -->
+            <div class="modal-footer">
+                <input type="button" id="btnSubmit1" class="btn btn-primary btn-block" value="Lisa uus õpilane">
+            </div>
+        </div>
+    </div>
+</div>
+
 
     <script>
 
         $(function () {
-            $('#btnSubmit').click(function () {
+            $('#btnSubmit1').click(function () {
                 var firstName = $("#firstName").val();
                 var lastName = $("#lastName").val();
                 var pin = $("#pin").val();
@@ -43,8 +96,63 @@
                     pin: pin
                 }).done(function (data) {
                     if (data == "success") {
-                        location.href = "users"
-                        document.getElementById('alertText').innerHTML = "Uus kasutaja lisatud"
+                        //location.href = "users"
+                        document.getElementById('alertText1').innerHTML = "Uus kasutaja lisatud"
+
+                    } else {
+                        alert("Error!")
+                    }
+                });
+            });
+        });
+    </script>
+
+<button type="button" class="btn btn-lg" data-toggle="modal" data-target="#popUpWindow2">Lisa admin</button>
+
+<div class="modal fade" id="popUpWindow2">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- header -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3 class="modal-title">Admini lisamine</h3>
+                <p id="alertText1"></p>
+            </div>
+
+            <!-- body (form) -->
+            <div class="modal-body">
+                <form role="form"  name="myForm">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Email" name="email" id="email">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Parool" name="password" id="password">
+                    </div>
+                </form>
+            </div>
+
+            <!-- button -->
+            <div class="modal-footer">
+                <input type="button" id="btnSubmit2" class="btn btn-primary btn-block" value="Lisa uus admin">
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script>
+
+        $(function () {
+            $('#btnSubmit2').click(function () {
+                var email = $("#email").val();
+                var password = $("#password").val();
+                $.post("users/addingAdmins", {
+                    email: email,
+                    password: password
+                }).done(function (data) {
+                    if (data == "success") {
+                        //location.href = "users"
+                        document.getElementById('alertText1').innerHTML = "Uus admin lisatud"
 
                     } else {
                         alert("Error!")
@@ -55,45 +163,152 @@
     </script>
 
 
-    <h3>Lisa uus admin</h3>
 
-    <div id="alertText"></div>
+<button type="button" class="btn btn-lg" data-toggle="modal" data-target="#popUpWindow3">Lisa küsimus</button>
 
-    <form method="post" id="form">
-        <form id="form" method="post">
-            <form role="form" name="myForm">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Email" name="email" id="email">
-                </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Parool" name="password" id="password">
-                </div>
-            </form>
+<div class="modal fade" id="popUpWindow3">
+    <div class="modal-dialog">
+        <div class="modal-content">
 
-            <input type="button" id="btnSubmit2" class="btn btn-primary btn-block" value="Lisa!">
-        </form>
+            <!-- header -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3 class="modal-title">Küsimuse lisamine</h3>
+                <p id="alertText1"></p>
+            </div>
 
-        <script>
+            <!-- body (form) -->
+            <div class="modal-body">
+                <form role="form"  name="myForm">
+                    <div class="form-group">
+                        <label for="question">Küsimus:</label>
+                        <textarea class="form-control" rows="5" id="question_text" name="question_text"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="right_answer">Õige vastus:</label>
+                        <textarea class="form-control" rows="3" id="answer_text_right" name="answer_text_right"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="false_answer_1">Vale vastus:</label>
+                        <textarea class="form-control" rows="3" id="answer_text_false1" name="answer_text_false1"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="false_answer_2">Vale vastus:</label>
+                        <textarea class="form-control" rows="3" id="answer_text_false2" name="answer_text_false2"></textarea>
+                    </div>
+                </form>
+            </div>
 
-            $(function () {
-                $('#btnSubmit2').click(function () {
-                    var email = $("#email").val();
-                    var password = $("#password").val();
-                    $.post("users/addingAdmins", {
-                        email: email,
-                        password: password
-                    }).done(function (data) {
-                        if (data == "success") {
-                            location.href = "users"
-                            document.getElementById('alertText').innerHTML = "Uus admin lisatud"
+            <!-- button -->
+            <div class="modal-footer">
+                <input type="button" id="btnSubmit3" class="btn btn-primary btn-block" value="Lisa uus küsimus">
+            </div>
+        </div>
+    </div>
+</div>
 
-                        } else {
-                            alert("Error!")
-                        }
-                    });
+    <script>
+        $(function () {
+            $('#btnSubmit3').click(function () {
+                var question_text = $("#question_text").val();
+                var answer_text_right = $("#answer_text_right").val();
+                var answer_text_false1 = $("#answer_text_false1").val();
+                var answer_text_false2 = $("#answer_text_false2").val();
+
+
+                $.post("users/addingQuestions", {
+                    question_text: question_text,
+                    answer_text_right: answer_text_right,
+                    answer_text_false1: answer_text_false1,
+                    answer_text_false2: answer_text_false2
+                }).done(function (data) {
+                    if (data == "success") {
+                        //location.href = "users"
+                        document.getElementById('alertText1').innerHTML = "Uus küsimus lisatud"
+                    } else {
+                        alert("Error!")
+                    }
                 });
             });
-        </script>
+        });
+    </script>
+
+    <div class="table-responsive">
+        <h3 align="center">Lisa, kustuta ja muuda praktilist ülesannet</h3><br />
+        <div id="live_data"></div>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            function fetch_data()
+            {
+                $.ajax({
+                    url:"users/selectingPractical",
+                    method:"POST",
+                    success:function(data){
+                        $('#live_data').html(data);
+                    }
+                });
+            }
+            fetch_data();
+            $(document).on('click', '#btn_add', function(){
+                var practical_text = $('#practical_text').text();
+                if(practical_text == '')
+                {
+                    alert("Enter text");
+                    return false;
+                }
+
+                $.ajax({
+                    url:"users/insertingPractical",
+                    method:"POST",
+                    data:{practical_text:practical_text},
+                    dataType:"text",
+                    success:function(data)
+                    {
+                        alert(data);
+                        fetch_data();
+                    }
+                })
+            });
+            function edit_data(id, text, column_name)
+            {
+                $.ajax({
+                    url:"users/editingPractical",
+                    method:"POST",
+                    data:{id:id, text:text, column_name:column_name},
+                    dataType:"text",
+                    success:function(data){
+                        alert(data);
+                    }
+                });
+            }
+            $(document).on('blur', '.practical_text', function(){
+                var id = $(this).data("id1");
+                var practical_text = $(this).text();
+                edit_data(id, practical_text, "practical_text");
+            });
+
+            $(document).on('click', '.btn_delete', function(){
+                var id=$(this).data("id3");
+                if(confirm("Are you sure you want to delete this?"))
+                {
+                    $.ajax({
+                        url:"users/deletingPractical",
+                        method:"POST",
+                        data:{id:id},
+                        dataType:"text",
+                        success:function(data){
+                            alert(data);
+                            fetch_data();
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+    </div>
     <?php endif; ?>
 
 

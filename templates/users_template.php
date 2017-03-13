@@ -49,7 +49,10 @@
         }
 
         #logOutBtn {
-            margin-left: 67%;
+            margin-bottom: 5px;
+            margin-top: 0px;
+            margin-right: 0px;
+            margin-left: 63%;
         }
     </style>
 
@@ -72,6 +75,7 @@
     <img src="assets/images/KHK_logo.png" />
     <a id="logOutBtn" class="btn btn-primary btn-lg" href="logout">Logi välja</a>
 </div>
+
 
 <!-- Main component for a primary marketing message or call to action -->
 <?php if (!file_exists("views/$controller/{$controller}_$action.php")) error_out('The view <i>views/' . $controller . '/' . $controller . '_' . $action . '.php</i> does not exist. Create that file.'); ?>

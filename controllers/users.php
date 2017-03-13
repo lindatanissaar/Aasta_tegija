@@ -56,6 +56,119 @@ class users extends Controller
 
     }
 
+    function AJAX_addingQuestions()
+
+    {
+        if (isset($_POST["question_text"]) && isset($_POST["answer_text_right"]) && isset($_POST["answer_text_false1"]) && isset($_POST["answer_text_false2"])) {
+            $question_text = $_POST["question_text"];
+            $answer_text_right = $_POST["answer_text_right"];
+            $answer_text_false1 = $_POST["answer_text_false1"];
+            $answer_text_false2 = $_POST["answer_text_false2"];
+            $conn = mysqli_connect("127.0.0.1", "root", "", "Aasta_tegija");
+
+
+            insert('questions',[
+                'text'=>$question_text
+            ]);
+
+            //$question_id = "SELECT question_id FROM questions WHERE text='$question_text'";
+            $question_id = mysqli_insert_id($conn);
+            insert('answers',[
+                'question_id' =>$question_id,
+                'answer_text'=>$answer_text_right,
+                'answer'=>1
+            ]);
+
+            insert('answers',[
+                'question_id' =>$question_id,
+                'answer_text'=>$answer_text_false1,
+                'answer'=>0
+            ]);
+
+            insert('answers',[
+                'question_id' =>$question_id,
+                'answer_text'=>$answer_text_false2,
+                'answer'=>0
+            ]);
+
+            echo "success";
+        }
+
+    }
+
+
+    function AJAX_selectingPractical()
+    {
+        $conn = mysqli_connect("127.0.0.1", "root", "", "Aasta_tegija");
+        $output = '';
+        $mysql = "SELECT * FROM practical_test ORDER BY practical_id DESC";
+        $result = mysqli_query($conn, $mysql);
+        $output .= '  
+              <div class="table-responsive">  
+                   <table class="table table-bordered" width="80%">  
+                        <tr>  
+                             <th width="15%">Id</th>  
+                             <th width="70%">Tekst</th>  
+                             <th width="15%">Kustuta/Lisa</th>  
+                        </tr>';
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_array($result)) {
+                $output .= '  
+                        <tr>  
+                             <td>' . $row["practical_id"] . '</td>  
+                             <td class="practical_text" data-id1="' . $row["practical_id"] . '" contenteditable>' . $row["practical_text"] . '</td>  
+                             <td><button type="button" name="delete_btn" data-id3="' . $row["practical_id"] . '" class="btn btn-xs btn-danger btn_delete" style="background-color: #FFE600; border-color: #FFE600">x</button></td>  
+                        </tr>  
+                   ';
+            }
+            $output .= '  
+                   <tr>  
+                        <td></td>  
+                        <td id="practical_text" contenteditable></td> 
+                        <td><button type="button" name="btn_add" id="btn_add" class="btn btn-xs btn-success" style="background-color: #0054a6; border-color: #0054a6" >+</button></td>  
+                   </tr>  
+              ';
+        } else {
+            $output .= '<tr>  
+                                  <td colspan="4">Andmed puuduvad</td>  
+                             </tr>';
+        }
+        $output .= '</table>  
+              </div>';
+        echo $output;
+
+    }
+
+    function AJAX_insertingPractical(){
+        $conn = mysqli_connect("127.0.0.1", "root", "", "Aasta_tegija");
+        $mysql = "INSERT INTO practical_test(practical_text) VALUES('".$_POST["practical_text"]."')";
+        if(mysqli_query($conn, $mysql))
+        {
+            echo 'Data Inserted';
+        }
+    }
+
+    function AJAX_editingPractical(){
+        $conn = mysqli_connect("127.0.0.1", "root", "", "Aasta_tegija");
+        $id = $_POST["id"];
+        $text = $_POST["text"];
+        $column_name = $_POST["column_name"];
+        $mysql = "UPDATE practical_test SET ".$column_name."='".$text."' WHERE practical_id='".$id."'";
+        if(mysqli_query($conn, $mysql))
+        {
+            echo 'Data Updated';
+        }
+    }
+
+    function AJAX_deletingPractical(){
+        $conn = mysqli_connect("127.0.0.1", "root", "", "Aasta_tegija");
+        $mysql = "DELETE FROM practical_test WHERE practical_id = '".$_POST["id"]."'";
+        if(mysqli_query($conn, $mysql))
+        {
+            echo 'Data Deleted';
+        }
+    }
+
     function index()
     {
         $this->users = get_all("SELECT * FROM users WHERE deleted=0");
