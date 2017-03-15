@@ -16,4 +16,12 @@ class logout extends Controller
         header('Location: users');
         exit();
     }
+
+    function elo()
+    {
+        session_destroy();
+        header('Location: ../welcome');
+        exit();
+    }
+
 } 
