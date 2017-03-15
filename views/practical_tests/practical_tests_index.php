@@ -12,17 +12,19 @@
         history.pushState(null, null, document.URL);
     });
 </script>
-<h1>Praktiline test</h1>
 
-<br>
 <div class="center">
+    <h1>Praktiline test</h1>
+
+    <br>
     <?= $practical_test['practical_text'] ?>
+    <?php print_r($_SESSION); ?>
 </div>
 
 <div class="center">
     <br/>
     <form>
-        <textarea rows="15" cols="100" name="practical_test_answer" id="practical_test_answer">
+        <textarea rows="15" cols="100" name="btn btn-outline-primary" id="practical_test_answer">
             <!DOCTYPE html>
             <html>
                 <body>
@@ -34,7 +36,7 @@
             </html>
         </textarea>
         <br>
-        <input type="button" id="sendAnswer" class="btn btn-primary btn-block" value="Edasta!">
+        <input type="button" id="sendAnswer" class="btn btn-primary btn-lg" value="Edasta!">
     </form>
 
     <?php
@@ -58,7 +60,7 @@
                 practical_question_id: practical_question_id
             }).done(function (data) {
                 if (data == "success") {
-                    location.href = "welcome"
+                    location.href = "practical_tests_previews"
                 } else {
                     alert("Sisestasid vale isikukoodi. Sellist kasutajat ei ole andmebaasis!")
                 }

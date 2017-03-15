@@ -12,10 +12,11 @@
         history.pushState(null, null, document.URL);
     });
 </script>
-<h1>Praktiline test</h1>
 
-<br>
 <div class="center">
+    <h1>Praktiline test</h1>
+
+    <br>
     <?= $practical_test['practical_text'] ?>
 </div>
 
@@ -23,14 +24,20 @@
     <br/>
     <form>
 
-        <div>
-            <iframe width="500" height="500" src="<?= $practical_test_preview['practical_test_answer'] ?>"></iframe>
+        <div class="row">
+            <div class="col-5">
+                <input align="right" type="button" id="goHome" class="btn btn-primary btn-lg" value="Lõpeta">
+            </div>
+            <div class="col-2">
 
+                <br>
+                <?php
+                $str = $practical_test_preview['practical_test_answer'];
+                echo htmlspecialchars_decode($str);
+                ?>
 
+            </div>
         </div>
-
-        <br>
-        <input type="button" id="sendAnswer" class="btn btn-primary btn-block" value="Edasta!">
     </form>
 
     <?php
@@ -41,25 +48,10 @@
 
 <script type="text/javascript">
 
-    $(function () {
-        $('#sendAnswer').click(function () {
-            var pin = '<?=$_SESSION['pin']?>';
-            var questions_result = '<?=$_SESSION['questions_result']?>';
-            var practical_test_answer = $("#practical_test_answer").val();
-            var practical_question_id = '<?=$practical_test['practical_id']?>';
-            $.post("practical_tests/practicalTestAnswer", {
-                pin: pin,
-                questions_result: questions_result,
-                practical_test_answer: practical_test_answer,
-                practical_question_id: practical_question_id
-            }).done(function (data) {
-                if (data == "success") {
-                    location.href = "welcome"
-                } else {
-                    alert("Sisestasid vale isikukoodi. Sellist kasutajat ei ole andmebaasis!")
-                }
-            });
-        });
-    });
+    $('#goHome').click(function () {
+        session_destroy();
+        header('Location: users');
+        exit();
+    })
 
 </script>

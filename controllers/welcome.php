@@ -35,19 +35,25 @@ class welcome extends Controller
     {
         exit(q("DELETE FROM forms WHERE form_id = '{$_POST['form_id']}'") ? 'Ok' : 'Fail');
     }
+
     function AJAX_enterantsLogin()
     {
-        if (isset($_POST["pin"])) {
-            $pin = $_POST["pin"];
-            $conn = mysqli_connect("127.0.0.1", "root", "", "Aasta_tegija");
-            $data = mysqli_query($conn, "SELECT * FROM `users` WHERE `pin` = '{$pin}'");
-            $row_cnt = mysqli_num_rows($data);
-            if ($row_cnt == 1) {
-                echo "success";
-            }else{
-                echo "failed";
-            }
+
+//        if (isset($_POST["pin"])) {
+//            exit('pin missing');
+//        }
+
+        $pin = $_POST["pin"];
+        $user = get_first("SELECT * FROM `users` WHERE `pin` = '{$pin}'");
+
+        if (empty($user)) {
+
+            exit("Invalid user");
         }
+
+        $_SESSION['user_id'] = $user['user_id'];
+
+        exit("success");
     }
 
 }

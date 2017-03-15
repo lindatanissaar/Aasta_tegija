@@ -1,23 +1,23 @@
 <?php namespace Halo;
 
-class practical_tests extends Controller
+class practical_tests_previews extends Controller
 {
     public $requires_auth = false;
     public $template = 'forms';
 
     function index()
     {
-        $this->practical_test = get_first("SELECT * FROM practical_test ORDER BY RAND() LIMIT 1");
-        $_SESSION['pin']=38805244912;
+        $_SESSION['pin']=38805244913;
         $_SESSION['questions_result']=10;
-
+        $pin = $_SESSION['pin'];
+        $this->practical_test_preview = get_first("SELECT * FROM logs WHERE PIN = '$pin' LIMIT 1");
     }
 
 
     /**
      *
      */
-    function AJAX_practicalTestAnswer()
+    function AJAX_practicalTestEndSession()
 
     {
         if (isset($_POST["pin"])
@@ -29,7 +29,6 @@ class practical_tests extends Controller
             $questions_result = $_POST["questions_result"];
             $practical_test_answer = $_POST["practical_test_answer"];
             $practical_question_id = $_POST["practical_question_id"];
-
 
 
 
