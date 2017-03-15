@@ -148,9 +148,7 @@
             </div>
         </div>
     </div>
-
             <script>
-
                $(function(){
                    $('#btnSubmit').click(function(){
                        var firstName = $("#firstName").val();
@@ -158,7 +156,7 @@
                        var pin = $("#pin").val();
                        $.post("welcome/enterantsLogin", {pin: pin}).done(function(data){
                            if(data=="success"){
-                               location.href="welcome" + "?pin=" + pin;
+                               location.href="questions" + "?pin=" + pin;
                            }else{
                                alert("Sisestasid vale isikukoodi. Sellist kasutajat ei ole andmebaasis!")
                            }

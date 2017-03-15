@@ -9,11 +9,7 @@ class welcome extends Controller
 
     function index()
     {
-        function index()
-        {
-            $this->users = get_all("SELECT * FROM users WHERE deleted=0");
-
-        }
+        $foo = Tests::add();
         $this->forms = get_all("SELECT * FROM forms");
     }
 
