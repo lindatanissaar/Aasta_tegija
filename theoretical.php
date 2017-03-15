@@ -544,21 +544,23 @@ $q9 = ($arr[9]);
 
 </body>
 </html>
-<?php
-$(function(){
-    $('#submit').click(function(){
-        var firstName = $("#firstName").val();
-        var lastName = $("#lastName").val();
-        var pin = $("#pin").val();
-        $.post("welcome/enterantsLogin", {pin: pin}).done(function(data){
-            if(data=="success"){
-                location.href="welcome" + "?pin=" + pin;
-            }else{
-                alert("Sisestasid vale isikukoodi. Sellist kasutajat ei ole andmebaasis!")
-                           }
+<script>
+    $(function(){
+        $('#submit').click(function(){
+            var firstName = $("#firstName").val();
+            var lastName = $("#lastName").val();
+            var pin = $("#pin").val();
+            $.post("welcome/enterantsLogin", {pin: pin}).done(function(data){
+                if(data=="success"){
+                    location.href="welcome" + "?pin=" + pin;
+                }else{
+                    alert("Sisestasid vale isikukoodi. Sellist kasutajat ei ole andmebaasis!")
+                }
+            });
         });
-                   });
-});
+    });
+</script>
+
 
 
 ?>
