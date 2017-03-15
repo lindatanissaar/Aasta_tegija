@@ -148,7 +148,9 @@
             </div>
         </div>
     </div>
+
             <script>
+
                $(function(){
                    $('#btnSubmit').click(function(){
                        var firstName = $("#firstName").val();
