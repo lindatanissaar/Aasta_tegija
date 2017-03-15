@@ -30,7 +30,8 @@ class practical_tests extends Controller
             $practical_question_id = $_POST["practical_question_id"];
 
 
-            $conn = mysqli_connect("127.0.0.1", "root", "", "aastategija");
+
+
             insert('logs', [
                 'PIN' => $pin,
                 'questions_result' => $questions_result,
