@@ -65,3 +65,5 @@ server by jQuery and server's response will be written to the box below.
 
 <br>
 
+<?php  print_r($_SESSION) ?>
+

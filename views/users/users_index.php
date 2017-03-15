@@ -25,12 +25,6 @@
         color: white;
     }
 
-    #btnSubmit{
-        background-color: #0054a6;
-        border-color: #0054a6;
-        color: white;
-    }
-
     .modal-header {
         background-color: #FFE600;
     }
@@ -41,8 +35,48 @@
     input[name="firstName"], input[name="lastName"]{
         text-transform: capitalize;
     }
+
+    h3 {
+        border-bottom: #003a73 solid 2px;
+        padding-bottom: 10px;
+        width: 40%;
+    }
+
+    h3:hover {
+        cursor: pointer;
+    }
+
+    #questions, #answers, #practical,#ranking {
+        display: none;
+    }
 </style>
 <?php if ($auth->is_admin): ?>
+
+    <script>
+        $(document).ready(function(){
+            $("#questions_OnClick").click(function(){
+                $("#questions").toggle();
+            });
+        });
+
+        $(document).ready(function(){
+            $("#answers_OnClick").click(function(){
+                $("#answers").toggle();
+            });
+        });
+
+        $(document).ready(function(){
+            $("#practical_OnClick").click(function(){
+                $("#practical").toggle();
+            });
+        });
+
+        $(document).ready(function(){
+            $("#ranking_OnClick").click(function(){
+                $("#ranking").toggle();
+            });
+        });
+    </script>
 
     <div class="content">
 
@@ -162,9 +196,9 @@
         });
     </script>
 
-
-        <div class="table-responsive">
-            <h3 align="center">Lisa, kustuta ja muuda küsimust</h3><br />
+        <!--questions-->
+        <h3 align="center" id="questions_OnClick" cursor="hand">Lisa, kustuta ja muuda küsimust</h3><br />
+        <div class="table-responsive" id="questions">
             <div id="live_data2"></div>
         </div>
 
@@ -239,8 +273,8 @@
         </script>
 
         <!--answer-->
-        <div class="table-responsive">
-            <h3 align="center">Lisa, kustuta ja muuda vastust</h3><br />
+        <h3 align="center" id="answers_OnClick">Lisa, kustuta ja muuda vastust</h3><br />
+        <div class="table-responsive" id="answers">
             <div id="live_data3"></div>
         </div>
 
@@ -339,10 +373,11 @@
             });
         </script>
 
-    <div class="table-responsive">
-        <h3 align="center">Lisa, kustuta ja muuda praktilist ülesannet</h3><br />
-        <div id="live_data"></div>
-    </div>
+        <!--practical-->
+        <h3 align="center" id="practical_OnClick">Lisa, kustuta ja muuda praktilist ülesannet</h3><br />
+        <div class="table-responsive" id="practical">
+            <div id="live_data"></div>
+        </div>
 
     <script>
         $(document).ready(function(){
@@ -413,6 +448,135 @@
             });
         });
     </script>
+
+        <!-- ranking-->
+
+        <h3 align="center" id="ranking_OnClick">Hinda õpilaste praktilist tulemust</h3><br />
+        <div class="table-responsive" id="ranking">
+            <div id="live_data4"></div>
+        </div>
+
+        <script>
+            $(document).ready(function(){
+                function fetch_data()
+                {
+                    $.ajax({
+                        url:"users/selectingRanking",
+                        method:"POST",
+                        success:function(data){
+                            $('#live_data4').html(data);
+                        }
+                    });
+                }
+                fetch_data();
+                $(document).on('click', '#btn_add4', function(){
+                    var PIN = $('#PIN').text();
+                    var questions_result = $('#questions_result').text();
+                    var practical_test_question_id = $('#practical_test_question_id').text();
+                    var practical_test_answer = $('#practical_test_answer').text();
+                    var practical_test_points = $('#practical_test_points').text();
+                    if(PIN == '')
+                    {
+                        alert("Enter text");
+                        return false;
+                    }
+
+                    if(questions_result == '')
+                    {
+                        alert("Enter text");
+                        return false;
+                    }
+
+                    if(practical_test_question_id == '')
+                    {
+                        alert("Enter text");
+                        return false;
+                    }
+
+                    if(practical_test_answer == '')
+                    {
+                        alert("Enter text");
+                        return false;
+                    }
+
+                    if(practical_test_points == '')
+                    {
+                        alert("Enter text");
+                        return false;
+                    }
+
+                    $.ajax({
+                        url:"users/insertingRanking",
+                        method:"POST",
+                        data:{PIN: PIN, questions_result:questions_result, practical_test_question_id: practical_test_question_id, practical_test_answer: practical_test_answer, practical_test_points:practical_test_points},
+                        dataType:"text",
+                        success:function(data)
+                        {
+                            alert(data);
+                            fetch_data();
+                        }
+                    })
+                });
+                function edit_data(id, text, column_name)
+                {
+                    $.ajax({
+                        url:"users/editingRanking",
+                        method:"POST",
+                        data:{id:id, text:text, column_name:column_name},
+                        dataType:"text",
+                        success:function(data){
+                            alert(data);
+                        }
+                    });
+                }
+                $(document).on('blur', '.PIN', function(){
+                    var id = $(this).data("id1");
+                    var PIN = $(this).text();
+                    edit_data(id, PIN, "PIN");
+                });
+
+                $(document).on('blur', '.questions_result', function(){
+                    var id = $(this).data("id2");
+                    var questions_result = $(this).text();
+                    edit_data(id, questions_result, "questions_result");
+                });
+
+                $(document).on('blur', '.practical_test_question_id', function(){
+                    var id = $(this).data("id3");
+                    var practical_test_question_id = $(this).text();
+                    edit_data(id, practical_test_question_id, "practical_test_question_id");
+                });
+
+                $(document).on('blur', '.practical_test_answer', function(){
+                    var id = $(this).data("id4");
+                    var practical_test_answer = $(this).text();
+                    edit_data(id, practical_test_answer, "practical_test_answer");
+                });
+
+                $(document).on('blur', '.practical_test_points', function(){
+                    var id = $(this).data("id5");
+                    var practical_test_points = $(this).text();
+                    edit_data(id, practical_test_points, "practical_test_points");
+                });
+
+                $(document).on('click', '.btn_delete4', function(){
+                    var id=$(this).data("id6");
+                    if(confirm("Are you sure you want to delete this?"))
+                    {
+                        $.ajax({
+                            url:"users/deletingRanking",
+                            method:"POST",
+                            data:{id:id},
+                            dataType:"text",
+                            success:function(data){
+                                alert(data);
+                                fetch_data();
+                            }
+                        });
+                    }
+                });
+            });
+        </script>
 
     </div>
     <?php endif; ?>

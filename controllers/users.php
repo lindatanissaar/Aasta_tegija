@@ -282,6 +282,92 @@ class users extends Controller
         }
     }
 
+    // ranking
+
+    function AJAX_selectingRanking()
+    {
+        $conn = mysqli_connect("127.0.0.1", "root", "", "Aasta_tegija");
+        $output = '';
+        $mysql = "SELECT * FROM logs ORDER BY logs_id DESC";
+        $result = mysqli_query($conn, $mysql);
+        $output .= '  
+              <div class="table-responsive">  
+                   <table class="table table-bordered" width="80%">  
+                        <tr>  
+                             <th width="10%">LogiId</th>  
+                             <th width="10%">PIN</th>  
+                             <th width="20%">Teoreetiline tulemus</th>
+                             <th width="20%">Praktiline ülesanne</th>
+                             <th width="20%">Praktiline vastus</th>
+                             <th width="10%">Praktiline tulemus</th>
+                             <th width="10%">Kustuta/Lisa</th>  
+                        </tr>';
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_array($result)) {
+                $output .= '  
+                        <tr>  
+                             <td>' . $row["logs_id"] . '</td>  
+                             <td class="PIN" data-id1="' . $row["logs_id"] . '" contenteditable>' . $row["PIN"] . '</td> 
+                             <td class="questions_result" data-id2="' . $row["logs_id"] . '" contenteditable>' . $row["questions_result"] . '</td>
+                             <td class="practical_test_question_id" data-id3="' . $row["logs_id"] . '" contenteditable>' . $row["practical_test_question_id"] . '</td>
+                             <td class="practical_test_answer" data-id4="' . $row["logs_id"] . '" contenteditable>' . $row["practical_test_answer"] . '</td>
+                             <td class="practical_test_points" data-id5="' . $row["logs_id"] . '" contenteditable>' . $row["practical_test_points"] . '</td>
+                             <td><button type="button" name="delete_btn" data-id6="' . $row["logs_id"] . '" class="btn btn-xs btn-danger btn_delete4" style="background-color: #FFE600; border-color: #FFE600">x</button></td>  
+                        </tr>  
+                   ';
+            }
+            $output .= '  
+                   <tr>  
+                        <td></td>
+                        <td id="PIN" contenteditable></td>
+                        <td id="questions_result" contenteditable></td>
+                        <td id="practical_test_question_id" contenteditable></td>
+                        <td id="practical_test_answer" contenteditable></td>
+                        <td id="practical_test_points" contenteditable></td> 
+                        <td><button type="button" name="btn_add" id="btn_add4" class="btn btn-xs btn-success" style="background-color: #0054a6; border-color: #0054a6" >+</button></td>  
+                   </tr>  
+              ';
+        } else {
+            $output .= '<tr>  
+                                  <td colspan="4">Andmed puuduvad</td>  
+                             </tr>';
+        }
+        $output .= '</table>  
+              </div>';
+        echo $output;
+
+    }
+
+    function AJAX_insertingRanking(){
+        $conn = mysqli_connect("127.0.0.1", "root", "", "Aasta_tegija");
+        $mysql = "INSERT INTO logs(PIN, questions_result, practical_test_question_id, practical_test_answer, practical_test_points) VALUES('".$_POST["PIN"]."', '".$_POST["questions_result"]."','".$_POST["practical_test_question_id"]."','".$_POST["practical_test_answer"]."', '".$_POST["practical_test_points"]."')";
+        if(mysqli_query($conn, $mysql))
+        {
+            echo 'Data Inserted';
+        }
+    }
+
+    function AJAX_editingRanking(){
+        $conn = mysqli_connect("127.0.0.1", "root", "", "Aasta_tegija");
+        $id = $_POST["id"];
+        $text = $_POST["text"];
+        $column_name = $_POST["column_name"];
+        $mysql = "UPDATE logs SET ".$column_name."='".$text."' WHERE logs_id='".$id."'";
+        if(mysqli_query($conn, $mysql))
+        {
+            echo 'Data Updated';
+        }
+    }
+
+    function AJAX_deletingRanking(){
+        $conn = mysqli_connect("127.0.0.1", "root", "", "Aasta_tegija");
+        $mysql = "DELETE FROM logs WHERE logs_id = '".$_POST["id"]."'";
+        if(mysqli_query($conn, $mysql))
+        {
+            echo 'Data Deleted';
+        }
+    }
+
     function index()
     {
         $this->users = get_all("SELECT * FROM users WHERE deleted=0");

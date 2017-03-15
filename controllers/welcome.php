@@ -12,13 +12,10 @@ class welcome extends Controller
 
 
     function AJAX_enterantsLogin()
-
     {
         if (isset($_POST["pin"])) {
             $pin = $_POST["pin"];
-
             $conn = mysqli_connect("127.0.0.1", "root", "", "Aasta_tegija");
-
             $data = mysqli_query($conn, "SELECT * FROM `users` WHERE `pin` = '{$pin}'");
             $row_cnt = mysqli_num_rows($data);
             if ($row_cnt == 1) {
@@ -27,7 +24,6 @@ class welcome extends Controller
                 echo "failed";
             }
         }
-
     }
 
     function POST_index()
