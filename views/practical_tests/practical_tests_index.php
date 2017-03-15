@@ -18,7 +18,7 @@
 
     <br>
     <?= $practical_test['practical_text'] ?>
-    <?php print_r($_SESSION); ?>
+    <?php //print_r($_SESSION); ?>
 </div>
 
 <div class="center">
@@ -41,7 +41,7 @@
 
     <?php
     $practical_id = $practical_test['practical_id'];
-    echo "$practical_id";
+    //echo "$practical_id";
     ?>
 </div>
 

@@ -50,7 +50,7 @@
 
     $('#goHome').click(function () {
         session_destroy();
-        header('Location: users');
+        header('Location: welcome');
         exit();
     })
 
