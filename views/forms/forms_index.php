@@ -158,7 +158,7 @@
                        var pin = $("#pin").val();
                        $.post("welcome/enterantsLogin", {pin: pin}).done(function(data){
                            if(data=="success"){
-                               location.href="welcome"
+                               location.href="welcome" + "?pin=" + pin;
                            }else{
                                alert("Sisestasid vale isikukoodi. Sellist kasutajat ei ole andmebaasis!")
                            }

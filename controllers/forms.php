@@ -9,7 +9,11 @@ class forms extends Controller
 
     function index()
     {
-        $foo = Tests::add();
+        function index()
+        {
+            $this->users = get_all("SELECT * FROM users WHERE deleted=0");
+
+        }
         $this->forms = get_all("SELECT * FROM forms");
     }
 
