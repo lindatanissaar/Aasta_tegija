@@ -69,6 +69,7 @@ $q9 = ($arr[9]);
     <br/>
     <br/>
     <br/><br/>
+    <form action='process.php' method='post' id='quizForm' id='$number[1]'>
         <ol>
             <li>
                 <h3><?php
@@ -530,7 +531,7 @@ $q9 = ($arr[9]);
                 </div>
             </li>
         </ol>
-    <input type="button" id="btnSubmit" class="btn btn-primary btn-block" onClick="return validate()" value="Edasta!">
+    <input type="submit" id="btnSubmit" class="btn btn-primary btn-block" onClick="return validate()" value="Edasta!">
 </div>
 </body>
 <script>
