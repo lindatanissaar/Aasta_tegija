@@ -20,7 +20,7 @@ class users extends Controller
             $firstName = $_POST["firstName"];
             $lastName = $_POST["lastName"];
 
-            $conn = mysqli_connect("127.0.0.1", "root", "", "Aasta_tegija");
+            $conn = mysqli_connect("127.0.0.1", "root", "", "aastategija");
             insert('users',[
                 'firstName'=>$firstName,
                 'lastName'=>$lastName,
@@ -43,7 +43,7 @@ class users extends Controller
             // Hash the password
             $password = password_hash($password, PASSWORD_DEFAULT);
 
-            $conn = mysqli_connect("127.0.0.1", "root", "", "Aasta_tegija");
+            $conn = mysqli_connect("127.0.0.1", "root", "", "aastategija");
             insert('users',[
                 'email'=>$email,
                 'password'=>$password,
@@ -58,7 +58,7 @@ class users extends Controller
 
     function AJAX_selectingQuestions()
     {
-        $conn = mysqli_connect("127.0.0.1", "root", "", "Aasta_tegija");
+        $conn = mysqli_connect("127.0.0.1", "root", "", "aastategija");
         $output = '';
         $mysql = "SELECT * FROM questions ORDER BY question_id DESC";
         $result = mysqli_query($conn, $mysql);
@@ -99,7 +99,7 @@ class users extends Controller
     }
 
     function AJAX_insertingQuestions(){
-        $conn = mysqli_connect("127.0.0.1", "root", "", "Aasta_tegija");
+        $conn = mysqli_connect("127.0.0.1", "root", "", "aastategija");
         $mysql = "INSERT INTO questions(text) VALUES('".$_POST["text"]."')";
         if(mysqli_query($conn, $mysql))
         {
@@ -108,7 +108,7 @@ class users extends Controller
     }
 
     function AJAX_editingQuestions(){
-        $conn = mysqli_connect("127.0.0.1", "root", "", "Aasta_tegija");
+        $conn = mysqli_connect("127.0.0.1", "root", "", "aastategija");
         $id = $_POST["id"];
         $text = $_POST["text"];
         $column_name = $_POST["column_name"];
@@ -120,7 +120,7 @@ class users extends Controller
     }
 
     function AJAX_deletingQuestions(){
-        $conn = mysqli_connect("127.0.0.1", "root", "", "Aasta_tegija");
+        $conn = mysqli_connect("127.0.0.1", "root", "", "aastategija");
         $mysql = "DELETE FROM questions WHERE question_id = '".$_POST["id"]."'";
         if(mysqli_query($conn, $mysql))
         {
@@ -132,7 +132,7 @@ class users extends Controller
 
     function AJAX_selectingAnswers()
     {
-        $conn = mysqli_connect("127.0.0.1", "root", "", "Aasta_tegija");
+        $conn = mysqli_connect("127.0.0.1", "root", "", "aastategija");
         $output = '';
         $mysql = "SELECT * FROM answers ORDER BY answer_id DESC";
         $result = mysqli_query($conn, $mysql);
@@ -179,7 +179,7 @@ class users extends Controller
     }
 
     function AJAX_insertingAnswers(){
-        $conn = mysqli_connect("127.0.0.1", "root", "", "Aasta_tegija");
+        $conn = mysqli_connect("127.0.0.1", "root", "", "aastategija");
         $mysql = "INSERT INTO answers(question_id, answer_text, answer) VALUES('".$_POST["question_id"]."', '".$_POST["answer_text"]."', '".$_POST["answer"]."')";
         if(mysqli_query($conn, $mysql))
         {
@@ -188,7 +188,7 @@ class users extends Controller
     }
 
     function AJAX_editingAnswers(){
-        $conn = mysqli_connect("127.0.0.1", "root", "", "Aasta_tegija");
+        $conn = mysqli_connect("127.0.0.1", "root", "", "aastategija");
         $id = $_POST["id"];
         $text = $_POST["text"];
         $column_name = $_POST["column_name"];
@@ -200,7 +200,7 @@ class users extends Controller
     }
 
     function AJAX_deletingAnswers(){
-        $conn = mysqli_connect("127.0.0.1", "root", "", "Aasta_tegija");
+        $conn = mysqli_connect("127.0.0.1", "root", "", "aastategija");
         $mysql = "DELETE FROM answers WHERE answer_id = '".$_POST["id"]."'";
         if(mysqli_query($conn, $mysql))
         {
@@ -212,7 +212,7 @@ class users extends Controller
     // practical
     function AJAX_selectingPractical()
     {
-        $conn = mysqli_connect("127.0.0.1", "root", "", "Aasta_tegija");
+        $conn = mysqli_connect("127.0.0.1", "root", "", "aastategija");
         $output = '';
         $mysql = "SELECT * FROM practical_test ORDER BY practical_id DESC";
         $result = mysqli_query($conn, $mysql);
@@ -253,7 +253,7 @@ class users extends Controller
     }
 
     function AJAX_insertingPractical(){
-        $conn = mysqli_connect("127.0.0.1", "root", "", "Aasta_tegija");
+        $conn = mysqli_connect("127.0.0.1", "root", "", "aastategija");
         $mysql = "INSERT INTO practical_test(practical_text) VALUES('".$_POST["practical_text"]."')";
         if(mysqli_query($conn, $mysql))
         {
@@ -262,7 +262,7 @@ class users extends Controller
     }
 
     function AJAX_editingPractical(){
-        $conn = mysqli_connect("127.0.0.1", "root", "", "Aasta_tegija");
+        $conn = mysqli_connect("127.0.0.1", "root", "", "aastategija");
         $id = $_POST["id"];
         $text = $_POST["text"];
         $column_name = $_POST["column_name"];
@@ -274,7 +274,7 @@ class users extends Controller
     }
 
     function AJAX_deletingPractical(){
-        $conn = mysqli_connect("127.0.0.1", "root", "", "Aasta_tegija");
+        $conn = mysqli_connect("127.0.0.1", "root", "", "aastategija");
         $mysql = "DELETE FROM practical_test WHERE practical_id = '".$_POST["id"]."'";
         if(mysqli_query($conn, $mysql))
         {
@@ -286,7 +286,7 @@ class users extends Controller
 
     function AJAX_selectingRanking()
     {
-        $conn = mysqli_connect("127.0.0.1", "root", "", "Aasta_tegija");
+        $conn = mysqli_connect("127.0.0.1", "root", "", "aastategija");
         $output = '';
         $mysql = "SELECT * FROM logs ORDER BY logs_id DESC";
         $result = mysqli_query($conn, $mysql);
@@ -339,7 +339,7 @@ class users extends Controller
     }
 
     function AJAX_insertingRanking(){
-        $conn = mysqli_connect("127.0.0.1", "root", "", "Aasta_tegija");
+        $conn = mysqli_connect("127.0.0.1", "root", "", "aastategija");
         $mysql = "INSERT INTO logs(PIN, questions_result, practical_test_question_id, practical_test_answer, practical_test_points) VALUES('".$_POST["PIN"]."', '".$_POST["questions_result"]."','".$_POST["practical_test_question_id"]."','".$_POST["practical_test_answer"]."', '".$_POST["practical_test_points"]."')";
         if(mysqli_query($conn, $mysql))
         {
@@ -348,7 +348,7 @@ class users extends Controller
     }
 
     function AJAX_editingRanking(){
-        $conn = mysqli_connect("127.0.0.1", "root", "", "Aasta_tegija");
+        $conn = mysqli_connect("127.0.0.1", "root", "", "aastategija");
         $id = $_POST["id"];
         $text = $_POST["text"];
         $column_name = $_POST["column_name"];
@@ -360,7 +360,7 @@ class users extends Controller
     }
 
     function AJAX_deletingRanking(){
-        $conn = mysqli_connect("127.0.0.1", "root", "", "Aasta_tegija");
+        $conn = mysqli_connect("127.0.0.1", "root", "", "aastategija");
         $mysql = "DELETE FROM answers WHERE answer_id = '".$_POST["id"]."'";
         if(mysqli_query($conn, $mysql))
         {

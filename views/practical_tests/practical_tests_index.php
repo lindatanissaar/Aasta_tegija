@@ -1,3 +1,8 @@
+<?php
+$value = $_GET["questions_result"];
+$_SESSION ['questions_result'] = $value;
+?>
+
 <style>
 
     .center {
@@ -18,7 +23,6 @@
 
     <br>
     <?= $practical_test['practical_text'] ?>
-    <?php //print_r($_SESSION); ?>
 </div>
 
 <div class="center">
@@ -60,7 +64,7 @@
                 practical_question_id: practical_question_id
             }).done(function (data) {
                 if (data == "success") {
-                    location.href = "practical_tests_previews"
+                    location.href = "practical_tests_previews" + "?pin=" + pin
                 } else {
                     alert("Sisestasid vale isikukoodi. Sellist kasutajat ei ole andmebaasis!")
                 }

@@ -5,12 +5,15 @@ class practical_tests_previews extends Controller
     public $requires_auth = false;
     public $template = 'forms';
 
+    /**
+     *
+     */
     function index()
     {
-        $_SESSION['pin']=38805244913;
-        $_SESSION['questions_result']=10;
-        $pin = $_SESSION['pin'];
-        $this->practical_test_preview = get_first("SELECT * FROM logs WHERE PIN = '$pin' LIMIT 1");
+
+        $value = $_GET['pin'];
+        $_SESSION ['pin'] = $value;
+        $this->practical_test_preview = get_first("SELECT * FROM logs WHERE PIN = '$value' LIMIT 1");
     }
 
 
