@@ -5,6 +5,12 @@
         width: 50%;
     }
 
+    #btn {
+        background-color: #003a73;
+        color: white;
+        margin-left: 25%;
+    }
+
 </style>
 <script>
     history.pushState(null, null, document.URL);
@@ -24,10 +30,7 @@
     <br/>
     <form>
 
-        <div class="row">
-            <div class="col-5">
-                <input align="right" type="button" id="goHome" class="btn btn-primary btn-lg" value="Lõpeta">
-            </div>
+
             <div class="col-2">
 
                 <br>
@@ -41,17 +44,27 @@
     </form>
 
     <?php
-    $practical_id = $practical_test['practical_id'];
-    echo "$practical_id";
+        $practical_id = $practical_test['practical_id'];
+        echo "$practical_id";
     ?>
+
+    <button type="button" class="btn btn-lg" id="btn" data-toggle="modal" data-target="#popUpWindow5">LÕPETA</button>
+
+    <div class="modal fade" id="popUpWindow5">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- header -->
+                <div class="modal-header">
+                    <img src="assets/images/KHK_logo.png" />
+                    <h3 class="modal-title">Palju õnne! <br>Oled edukalt läbinud ülesanded :)</h3>
+                </div>
+
+                <!-- button -->
+                <div class="modal-footer">
+                    <a id="logOutBtn" class="btn btn-primary btn-block" href="logout2">Välju</a>
+                </div>
+            </div>
+        </div>
 </div>
 
-<script type="text/javascript">
-
-    $('#goHome').click(function () {
-        session_destroy();
-        header('Location: welcome');
-        exit();
-    })
-
-</script>

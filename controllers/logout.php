@@ -16,4 +16,5 @@ class logout extends Controller
         header('Location: users');
         exit();
     }
+
 } 
