@@ -46,7 +46,7 @@
         cursor: pointer;
     }
 
-    #questions, #answers, #practical,#ranking {
+    #questions, #answers, #practical,#ranking, #rankingRight {
         display: none;
     }
 </style>
@@ -74,6 +74,12 @@
         $(document).ready(function(){
             $("#ranking_OnClick").click(function(){
                 $("#ranking").toggle();
+            });
+        });
+
+        $(document).ready(function(){
+            $("#rankingRight_OnClick").click(function(){
+                $("#rankingRight").toggle();
             });
         });
     </script>
@@ -578,7 +584,35 @@
             });
         </script>
 
+        <!--rankingRight-->
+        <h3 align="center" id="rankingRight_OnClick">Pingerida</h3><br />
+
+        <div id="rankingRight">
+
+            <?php
+            //get results from database
+            $conn = mysqli_connect("127.0.0.1", "root", "", "Aasta_tegija");
+            $sql = "SELECT PIN, questions_result, practical_test_points, questions_result + practical_test_points AS TOTAL FROM logs ORDER BY TOTAL DESC";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                // output data of each row
+                while($row = $result->fetch_assoc()) {
+                    echo "PIN: " . $row["PIN"]. "            Teoreetiline tulemus: " . $row["questions_result"]. "          Praktiline tulemus: " . $row["practical_test_points"]. "            Kokku: " . $row["TOTAL"]."<br><br><br>";
+                }
+            } else {
+                echo "0 results";
+            }
+            ?>
+
+        </div>
+
+
+
+
+
     </div>
+
     <?php endif; ?>
 
 
