@@ -26,10 +26,12 @@
 
         <div class="row">
             <div class="col-5">
-                <input align="right" type="button" id="goHome" class="btn btn-primary btn-lg" value="Lõpeta">
+                <a id="logOutBtn" class="btn btn-primary btn-lg" href="logout/elo">Lõpeta</a>
             </div>
             <div class="col-2">
 
+                <br>
+                <p>Selline on sinu praktilise testi tulemus:</p>
                 <br>
                 <?php
                 $str = $practical_test_preview['practical_test_answer'];
@@ -45,13 +47,3 @@
     echo "$practical_id";
     ?>
 </div>
-
-<script type="text/javascript">
-
-    $('#goHome').click(function () {
-        session_destroy();
-        header('Location: welcome');
-        exit();
-    })
-
-</script>

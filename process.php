@@ -54,9 +54,17 @@
     if ($answer10 == "A") {
         $score++;
     }
-    echo "<center><font face='Berlin Sans FB' size='8'>Punkti summa<br> $score/10</font></center>";
-
+    echo "<center><font face='Berlin Sans FB' size='8'>Punkti summa küsimustelt<br> $score/10</font></center>";
+    $_SESSION['questions_result'] = $score;
+  //  echo "<input type="button" id="btnSubmit"  value="Saada">";
+?>
+<p>Teid suunatakse kohe Praktilise testi juurde, ole kannatlik</p>
+    <?php
+        header( "refresh:0;url=practical_tests?questions_result=$score" );
+    echo $score;
     ?>
+</div>
+
 
 
 </div>
