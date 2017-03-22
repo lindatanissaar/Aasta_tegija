@@ -36,16 +36,17 @@ class welcome extends Controller
     }
     function AJAX_enterantsLogin()
     {
+
         if (isset($_POST["pin"])) {
             $pin = $_POST["pin"];
-            $conn = mysqli_connect("127.0.0.1", "root", "", "aastategija");
-            $data = mysqli_query($conn, "SELECT * FROM `users` WHERE `pin` = '{$pin}'");
-            $row_cnt = mysqli_num_rows($data);
-            if ($row_cnt == 1) {
-                echo "success";
-            }else{
-                echo "failed";
+
+            $users = get_first("SELECT user_id FROM users WHERE pin = '{$pin}'");
+            if(!empty($users['user_id'])){
+
+            $_SESSION['user_id'] = $users['user_id'];
             }
+
+            exit (empty($users['user_id'])? 'puudub':'success');
         }
     }
 

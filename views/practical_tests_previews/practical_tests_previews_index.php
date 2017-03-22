@@ -5,6 +5,12 @@
         width: 50%;
     }
 
+    #btn {
+        background-color: #003a73;
+        color: white;
+        margin-left: 25%;
+    }
+
 </style>
 <script>
     history.pushState(null, null, document.URL);
@@ -24,26 +30,45 @@
     <br/>
     <form>
 
-        <div class="row">
-            <div class="col-5">
-                <a id="logOutBtn" class="btn btn-primary btn-lg" href="logout/elo">Lõpeta</a>
+
+        <div class="col-2">
+
+            <br>
+            <?php
+            /// kasuta seda
+            $value = (int)$_GET["pin"];
+            $_SESSION ['pin'] = $value;
+            print_r($_SESSION);
+            $str = $practical_test_preview['practical_test_answer'];
+            echo htmlspecialchars_decode($str);
+            ?>
+
+        </div>
+</div>
+</form>
+
+<?php
+$practical_id = $practical_test['practical_id'];
+echo "$practical_id";
+?>
+
+<button type="button" class="btn btn-lg" id="btn" data-toggle="modal" data-target="#popUpWindow5">LÕPETA</button>
+
+<div class="modal fade" id="popUpWindow5">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- header -->
+            <div class="modal-header">
+                <img src="assets/images/KHK_logo.png" />
+                <h3 class="modal-title">Palju õnne! <br>Oled edukalt läbinud ülesanded :)</h3>
             </div>
-            <div class="col-2">
 
-                <br>
-                <p>Selline on sinu praktilise testi tulemus:</p>
-                <br>
-                <?php
-                $str = $practical_test_preview['practical_test_answer'];
-                echo htmlspecialchars_decode($str);
-                ?>
-
+            <!-- button -->
+            <div class="modal-footer">
+                <a id="logOutBtn" class="btn btn-primary btn-block" href="logout2">Välju</a>
             </div>
         </div>
-    </form>
-
-    <?php
-    $practical_id = $practical_test['practical_id'];
-    echo "$practical_id";
-    ?>
+    </div>
 </div>
+
