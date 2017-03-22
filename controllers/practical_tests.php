@@ -8,8 +8,9 @@ class practical_tests extends Controller
     function index()
     {
         $this->practical_test = get_first("SELECT * FROM practical_test ORDER BY RAND() LIMIT 1");
-        $_SESSION['pin']=38805244912;
-        $_SESSION['questions_result']=10;
+//        $_SESSION['pin']=38805244912;
+//        $_SESSION['questions_result']=10;
+
     }
 
 

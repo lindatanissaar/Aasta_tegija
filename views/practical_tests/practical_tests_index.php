@@ -1,8 +1,3 @@
-<?php
-$value = $_GET["questions_result"];
-$_SESSION ['questions_result'] = $value;
-?>
-
 <style>
 
     .center {
@@ -45,7 +40,7 @@ $_SESSION ['questions_result'] = $value;
 
     <?php
     $practical_id = $practical_test['practical_id'];
-    //echo "$practical_id";
+
     ?>
 </div>
 
@@ -64,7 +59,7 @@ $_SESSION ['questions_result'] = $value;
                 practical_question_id: practical_question_id
             }).done(function (data) {
                 if (data == "success") {
-                    location.href = "practical_tests_previews" + "?pin=" + pin
+                    location.href="practical_tests_previews" + "?pin=" + pin;
                 } else {
                     alert("Sisestasid vale isikukoodi. Sellist kasutajat ei ole andmebaasis!")
                 }

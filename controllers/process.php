@@ -12,16 +12,16 @@
     <br/>
 
     <?php
-    $answer1 = $_POST['answerOne'];
-    $answer2 = $_POST['answerTwo'];
-    $answer3 = $_POST['answerThree'];
-    $answer4 = $_POST['answerFour'];
-    $answer5 = $_POST['answerFive'];
-    $answer6 = $_POST['answerSix'];
-    $answer7 = $_POST['answerSeven'];
-    $answer8 = $_POST['answerEight'];
-    $answer9 = $_POST['answerNine'];
-    $answer10 = $_POST['answerTen'];
+    $answer1 = $_POST['answer[1]'];
+    $answer2 = $_POST['answer[2]'];
+    $answer3 = $_POST['answer[3]'];
+    $answer4 = $_POST['answer[4]'];
+    $answer5 = $_POST['answer[5]'];
+    $answer6 = $_POST['answer[6]'];
+    $answer7 = $_POST['answer[7]'];
+    $answer8 = $_POST['answer[8]'];
+    $answer9 = $_POST['answer[9]'];
+    $answer10 = $_POST['answer[10]'];
     $score = 0;
 
     if ($answer1 == "C") {
@@ -60,8 +60,8 @@
 ?>
 <p>Teid suunatakse kohe Praktilise testi juurde, ole kannatlik</p>
     <?php
-        header( "refresh:0;url=practical_tests?questions_result=$score" );
-    echo $score;
+        header( "refresh:5;url=practical_tests?questions_result=$score" );
+    //echo $score;
     ?>
 </div>
 
