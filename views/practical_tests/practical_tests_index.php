@@ -6,6 +6,7 @@
     }
 
 </style>
+
 <script>
     history.pushState(null, null, document.URL);
     window.addEventListener('popstate', function () {
@@ -17,7 +18,8 @@
     <h1>Praktiline test</h1>
 
     <br>
-    <?= $practical_test['practical_text'] ?>
+    <?= $practical_test['practical_text']; ?>
+
 </div>
 
 <div class="center">
@@ -30,7 +32,6 @@
 
                   <?php echo "<--kirjuta oma vastus siia-->";?>
 
-
                 </body>
             </html>
         </textarea>
@@ -40,28 +41,25 @@
 
     <?php
     $practical_id = $practical_test['practical_id'];
-
     ?>
-</div>
 
+</div>
 <script type="text/javascript">
 
     $(function () {
         $('#sendAnswer').click(function () {
-            var pin = '<?=$_SESSION['pin']?>';
-            var questions_result = '<?=$_SESSION['questions_result']?>';
+            //make vars for posting
             var practical_test_answer = $("#practical_test_answer").val();
-            var practical_question_id = '<?=$practical_test['practical_id']?>';
-            $.post("practical_tests/practicalTestAnswer", {
-                pin: pin,
-                questions_result: questions_result,
-                practical_test_answer: practical_test_answer,
-                practical_question_id: practical_question_id
-            }).done(function (data) {
+            var user_id = <?= $_SESSION["user_id"] ?>;
+            var prtactical_test_id = <?= $practical_test['practical_id'] ?>;
+            // post vars
+            $.post("practical_tests/practicalTestAnswer", {user_id: user_id,
+                prtactical_test_id: prtactical_test_id,
+                practical_test_answer: practical_test_answer}).done(function (data) {
                 if (data == "success") {
-                    location.href="practical_tests_previews" + "?pin=" + pin;
+                    location.href = "practical_tests_previews";
                 } else {
-                    alert("Sisestasid vale isikukoodi. Sellist kasutajat ei ole andmebaasis!")
+                    alert("Midagi läks valesti!");
                 }
             });
         });

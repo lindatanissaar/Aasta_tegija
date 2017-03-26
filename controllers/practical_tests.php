@@ -8,8 +8,6 @@ class practical_tests extends Controller
     function index()
     {
         $this->practical_test = get_first("SELECT * FROM practical_test ORDER BY RAND() LIMIT 1");
-//        $_SESSION['pin']=38805244912;
-//        $_SESSION['questions_result']=10;
 
     }
 
@@ -20,39 +18,18 @@ class practical_tests extends Controller
     function AJAX_practicalTestAnswer()
 
     {
-        if (isset($_POST["pin"])
-            && isset($_POST["questions_result"])
-            && isset($_POST["practical_test_answer"])
-            && isset($_POST["practical_question_id"])
-        ) {
-            $pin = $_POST["pin"];
-            $questions_result = $_POST["questions_result"];
-            $practical_test_answer = $_POST["practical_test_answer"];
-            $practical_question_id = $_POST["practical_question_id"];
+        $practical_test_answer = $_POST['practical_test_answer'];
+        $user_id = $_POST['user_id'];
+        $prtactical_test_id = $_POST['prtactical_test_id'];
 
-
-
-
-            insert('logs', [
-                'PIN' => $pin,
-                'questions_result' => $questions_result,
-                'practical_test_answer' => $practical_test_answer,
-                'practical_test_question_id' => $practical_question_id,
-
-            ]);
-            echo "success";
-        } else {
-            echo "failed";
-        }
+        eioskateistmoodi("UPDATE logs SET practical_test_answer= '" . $practical_test_answer . "',
+         practical_test_question_id= '" . $prtactical_test_id . "' WHERE user_id= '" . $user_id . "'");
+        echo 'success';
     }
-
-}
 
 function POST_index()
 {
     echo "\$_POST:<br>";
     var_dump($_POST);
 }
-
-
-
+}
