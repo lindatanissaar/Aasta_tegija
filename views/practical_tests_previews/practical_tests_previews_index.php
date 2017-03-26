@@ -18,40 +18,26 @@
         history.pushState(null, null, document.URL);
     });
 </script>
-
+<br/>
 <div class="center">
-    <h1>Praktiline test</h1>
-
-    <br>
-    <?= $practical_test['practical_text'] ?>
-</div>
-
-<div class="center">
-    <br/>
-    <form>
-
-
-        <div class="col-2">
-
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h1 class="panel-title"></h1>
+            <h1>Praktiline test</h1>
+            <h2>sinu vastus sai selline:</h2>
+        </div>
+        <div class="panel-body">
             <br>
             <?php
-            /// kasuta seda
-            $value = (int)$_GET["pin"];
-            $_SESSION ['pin'] = $value;
-            print_r($_SESSION);
-            $str = $practical_test_preview['practical_test_answer'];
-            echo htmlspecialchars_decode($str);
+            echo htmlspecialchars_decode($practical_test_preview['practical_test_answer']);
             ?>
-
+            <br>
         </div>
+    </div>
+    <br/>
 </div>
+
 </form>
-
-<?php
-$practical_id = $practical_test['practical_id'];
-echo "$practical_id";
-?>
-
 <button type="button" class="btn btn-lg" id="btn" data-toggle="modal" data-target="#popUpWindow5">LÕPETA</button>
 
 <div class="modal fade" id="popUpWindow5">
@@ -60,7 +46,7 @@ echo "$practical_id";
 
             <!-- header -->
             <div class="modal-header">
-                <img src="assets/images/KHK_logo.png" />
+                <img src="assets/images/KHK_logo.png"/>
                 <h3 class="modal-title">Palju õnne! <br>Oled edukalt läbinud ülesanded :)</h3>
             </div>
 

@@ -277,7 +277,7 @@ class users extends Controller
     }
     function AJAX_insertingRanking(){
 
-        $mysql = "INSERT INTO logs(PIN, questions_result, practical_test_question_id, practical_test_answer, practical_test_points) VALUES('".$_POST["PIN"]."', '".$_POST["questions_result"]."','".$_POST["practical_test_question_id"]."','".$_POST["practical_test_answer"]."', '".$_POST["practical_test_points"]."')";
+        $mysql = "INSERT INTO logs(user_id, questions_result, practical_test_question_id, practical_test_answer, practical_test_points) VALUES('".$_POST["PIN"]."', '".$_POST["questions_result"]."','".$_POST["practical_test_question_id"]."','".$_POST["practical_test_answer"]."', '".$_POST["practical_test_points"]."')";
                     echo 'Data Inserted';
     }
     function AJAX_editingRanking(){
