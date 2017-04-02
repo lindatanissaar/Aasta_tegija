@@ -9,8 +9,7 @@ class welcome extends Controller
 
     function index()
     {
-        $foo = Tests::add();
-        $this->forms = get_all("SELECT * FROM forms");
+        $this->users = get_all("SELECT * FROM users");
     }
 
     function view()
@@ -35,25 +34,26 @@ class welcome extends Controller
     {
         exit(q("DELETE FROM forms WHERE form_id = '{$_POST['form_id']}'") ? 'Ok' : 'Fail');
     }
-
     function AJAX_enterantsLogin()
     {
 
-//        if (isset($_POST["pin"])) {
-//            exit('pin missing');
-//        }
+        if (isset($_POST["pin"])) {
+            $pin = $_POST["pin"];
 
-        $pin = $_POST["pin"];
-        $user = get_first("SELECT * FROM `users` WHERE `pin` = '{$pin}'");
+            $users = get_first("SELECT user_id FROM users WHERE pin = '{$pin}'");
+            if(!empty($users['user_id'])){
 
-        if (empty($user)) {
+            $_SESSION['user_id'] = $users['user_id'];
+            }
 
-            exit("Invalid user");
+            exit (empty($users['user_id'])? 'puudub':'success');
         }
+    }
 
-        $_SESSION['user_id'] = $user['user_id'];
-
-        exit("success");
+    function POST_index()
+    {
+        echo "\$_POST:<br>";
+        var_dump($_POST);
     }
 
 }

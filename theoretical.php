@@ -1,5 +1,5 @@
 <?php
-$db_name = "aasta_tegija";
+$db_name = "aastategija";
 $table_name ="answers";
 $table_name_2="questions";
 $connection = @mysql_connect("localhost", "root", "") or die(mysql_error());

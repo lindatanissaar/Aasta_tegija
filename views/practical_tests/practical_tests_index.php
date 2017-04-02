@@ -18,7 +18,6 @@
 
     <br>
     <?= $practical_test['practical_text'] ?>
-    <?php //print_r($_SESSION); ?>
 </div>
 
 <div class="center">
@@ -41,7 +40,7 @@
 
     <?php
     $practical_id = $practical_test['practical_id'];
-    //echo "$practical_id";
+
     ?>
 </div>
 
@@ -60,7 +59,7 @@
                 practical_question_id: practical_question_id
             }).done(function (data) {
                 if (data == "success") {
-                    location.href = "practical_tests_previews"
+                    location.href="practical_tests_previews" + "?pin=" + pin;
                 } else {
                     alert("Sisestasid vale isikukoodi. Sellist kasutajat ei ole andmebaasis!")
                 }
