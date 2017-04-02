@@ -80,6 +80,13 @@ function get_all($sql)
     return $result;
 }
 
+function get_all2($sql)
+{
+    global $db;
+    $q = mysqli_query($db, $sql) or db_error_out();
+    return $q;
+}
+
 function get_first($sql)
 {
     global $db;

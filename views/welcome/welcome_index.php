@@ -143,7 +143,7 @@
 
                     <!-- button -->
                     <div class="modal-footer">
-                        <input type="button" id="btnSubmit" class="btn btn-primary btn-block" onClick="return validate()" value="Edasta!">
+                        <input type="button" id="btnSubmit" class="btn btn-primary btn-block" value="Edasta!">
                     </div>
                 </div>
             </div>

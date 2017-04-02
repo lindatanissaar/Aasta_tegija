@@ -10,7 +10,7 @@ class practical_tests_previews extends Controller
      */
     function index()
     {
-        $_GET
+        $_GET;
         $this->practical_test_preview = get_first("SELECT * FROM logs WHERE PIN = '$value' LIMIT 1");
     }
 

@@ -72,7 +72,7 @@
 <body>
 
 <div class="header">
-    <img src="assets/images/KHK_logo.png" />
+    <img src="assets/images/KHK_logo.png"/>
     <a id="logOutBtn" class="btn btn-primary btn-lg" href="logout">Logi välja</a>
 </div>
 
@@ -80,8 +80,6 @@
 <!-- Main component for a primary marketing message or call to action -->
 <?php if (!file_exists("views/$controller/{$controller}_$action.php")) error_out('The view <i>views/' . $controller . '/' . $controller . '_' . $action . '.php</i> does not exist. Create that file.'); ?>
 <?php require "views/$controller/{$controller}_$action.php"; ?>
-
-
 
 
 <!-- Bootstrap core JavaScript

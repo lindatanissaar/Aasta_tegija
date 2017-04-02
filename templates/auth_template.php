@@ -101,45 +101,43 @@
 
 <body>
 
-    <div class="header">
-        <img src="assets/images/KHK_logo.png" />
+<div class="header">
+    <img src="assets/images/KHK_logo.png"/>
+</div>
+
+<form class="form-signin" method="post">
+
+    <h2 class="form-signin-heading"><?= __('Logi sisse') ?></h2>
+
+    <?php if (isset($errors)) {
+        foreach ($errors as $error): ?>
+            <div class="alert alert-danger">
+                <?= $error ?>
+            </div>
+        <?php endforeach;
+    } ?>
+
+
+    <label for="user"><?= __('Email') ?></label>
+
+    <div class="input-group">
+        <span class="input-group-addon"><i class="icon-user"></i></span>
+        <input id="user" name="email" type="text" class="form-control" placeholder="email" autofocus>
     </div>
 
-    <form class="form-signin" method="post">
+    <br/>
 
-        <h2 class="form-signin-heading"><?= __('Logi sisse') ?></h2>
+    <label for="pass"><?= __('Parool') ?></label>
 
-        <?php if (isset($errors)) {
-            foreach ($errors as $error): ?>
-                <div class="alert alert-danger">
-                    <?= $error ?>
-                </div>
-            <?php endforeach;
-        } ?>
+    <div class="input-group">
+        <span class="input-group-addon"><i class="icon-key"></i></span>
+        <input id="pass" name="password" type="password" class="form-control" placeholder="******">
+    </div>
 
+    <br/>
 
-        <label for="user"><?= __('Email') ?></label>
-
-        <div class="input-group">
-            <span class="input-group-addon"><i class="icon-user"></i></span>
-            <input id="user" name="email" type="text" class="form-control" placeholder="email" autofocus>
-        </div>
-
-        <br/>
-
-        <label for="pass"><?= __('Parool') ?></label>
-
-        <div class="input-group">
-            <span class="input-group-addon"><i class="icon-key"></i></span>
-            <input id="pass" name="password" type="password" class="form-control" placeholder="******">
-        </div>
-
-        <br/>
-
-        <button class="btn btn-lg btn-primary btn-block" type="submit"><?= __('Logi sisse') ?></button>
-    </form>
-
-
+    <button class="btn btn-lg btn-primary btn-block" id="login" type="submit"><?= __('Logi sisse') ?></button>
+</form>
 
 
 <!-- Bootstrap core JavaScript

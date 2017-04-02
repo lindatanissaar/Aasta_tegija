@@ -14,7 +14,7 @@ class Questions
     {
         $questions = [];
 
-        // Qet questions
+        // get questions
         q("SELECT * FROM answers JOIN questions USING (question_id)", $q);
 
 

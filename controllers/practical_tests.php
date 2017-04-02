@@ -30,9 +30,6 @@ class practical_tests extends Controller
             $practical_test_answer = $_POST["practical_test_answer"];
             $practical_question_id = $_POST["practical_question_id"];
 
-
-
-
             insert('logs', [
                 'PIN' => $pin,
                 'questions_result' => $questions_result,
