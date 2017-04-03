@@ -9,8 +9,7 @@ class process extends Controller
         for($x = 0; $x <= 10; $x++){
             $theor_ans = $_POST['answer[1]'];
             $check = get_all("SELECT * FROM answers WHERE answer_id = $x AND answer = 1");
-        }
-        if($theor_ans[$x] = $check){
+            if($theor_ans[$x] = $check);
 
         }
 
