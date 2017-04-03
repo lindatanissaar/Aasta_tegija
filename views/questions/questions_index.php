@@ -34,16 +34,16 @@
     <br/>
     <br/>
     <br/><br/>
-    <form action='process' method='post' id='quizForm' id='$number[1]'>
+    <form action='practical_tests' method='post' id='quizForm'>
         <ol>
-            <?php foreach ($questions as $question_id => $question): ?>
+            <?php foreach (array_slice($questions, 0, 10) as $question_id => $question): ?>
 
                 <li>
                     <h3><?= $question['text'] ?> </h3>
 
                     <?php foreach ($question['answers'] as $answer): ?>
                         <div>
-                            <input type='radio' name='answers[<?= $question_id ?>]' id='answernumber' value='A'/>
+                            <input type='radio' name='answers[<?= $question_id ?>]' id='answernumber' value='<?= $answer['id'] ?>'/>
                             <label for='answerOneA'> <?= $answer['text'] ?> </label>
                         </div>
                     <?php endforeach ?>
@@ -55,19 +55,6 @@
         <input type="submit" id="btnSubmit" class="btn btn-primary btn-block" onClick="return validate()"
                value="Edasta!">
 </div>
+
 </body>
-<script>
-    $(function () {
-        $('#submit').click(function () {
-            var pin = $("#pin").val();
-            $.post("theoretical", {pin: pin}).done(function (data) {
-                if (data == "success") {
-                    location.href = "theoretical";
-                } else {
-                    alert("Sisestasid vale isikukoodi. Sellist kasutajat ei ole andmebaasis!")
-                }
-            });
-        });
-    });
-</script>
 </html>
