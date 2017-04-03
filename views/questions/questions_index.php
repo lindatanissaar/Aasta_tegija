@@ -47,7 +47,6 @@
                             <label for='answerOneA'> <?= $answer['text'] ?> </label>
                         </div>
                     <?php endforeach ?>
-
                 </li>
 
             <?php endforeach ?>

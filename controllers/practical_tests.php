@@ -1,5 +1,6 @@
 <?php namespace Halo;
 
+use Aastategija\Tests as T;
 class practical_tests extends Controller
 {
     public $requires_auth = false;
@@ -8,8 +9,6 @@ class practical_tests extends Controller
     function index()
     {
         $this->practical_test = get_first("SELECT * FROM practical_test ORDER BY RAND() LIMIT 1");
-//        $_SESSION['pin']=38805244912;
-//        $_SESSION['questions_result']=10;
 
     }
 
@@ -18,38 +17,13 @@ class practical_tests extends Controller
      *
      */
     function AJAX_practicalTestAnswer()
-
     {
-        if (isset($_POST["pin"])
-            && isset($_POST["questions_result"])
-            && isset($_POST["practical_test_answer"])
-            && isset($_POST["practical_question_id"])
-        ) {
-            $pin = $_POST["pin"];
-            $questions_result = $_POST["questions_result"];
+            $user_id = $_SESSION["user_id"];
             $practical_test_answer = $_POST["practical_test_answer"];
             $practical_question_id = $_POST["practical_question_id"];
-
-            insert('logs', [
-                'PIN' => $pin,
-                'questions_result' => $questions_result,
-                'practical_test_answer' => $practical_test_answer,
-                'practical_test_question_id' => $practical_question_id,
-
-            ]);
-            echo "success";
-        } else {
-            echo "failed";
-        }
+            T::sendAnswer($user_id, $practical_test_answer, $practical_question_id);
     }
 
 }
-
-function POST_index()
-{
-    echo "\$_POST:<br>";
-    var_dump($_POST);
-}
-
 
 

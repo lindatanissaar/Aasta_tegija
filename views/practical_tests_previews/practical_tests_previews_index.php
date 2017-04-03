@@ -22,35 +22,15 @@
 <div class="center">
     <h1>Praktiline test</h1>
 
-    <br>
-    <?= $practical_test['practical_text'] ?>
-</div>
-
-<div class="center">
     <br/>
-    <form>
 
 
         <div class="col-2">
 
-            <br>
-            <?php
-            /// kasuta seda
-            $value = (int)$_GET["pin"];
-            $_SESSION ['pin'] = $value;
-            print_r($_SESSION);
-            $str = $practical_test_preview['practical_test_answer'];
-            echo htmlspecialchars_decode($str);
-            ?>
+            <?= $practical_test_preview['practical_test_answer'] ; ?>
 
         </div>
 </div>
-</form>
-
-<?php
-$practical_id = $practical_test['practical_id'];
-echo "$practical_id";
-?>
 
 <button type="button" class="btn btn-lg" id="btn" data-toggle="modal" data-target="#popUpWindow5">LÕPETA</button>
 
@@ -62,14 +42,15 @@ echo "$practical_id";
             <div class="modal-header">
                 <img src="assets/images/KHK_logo.png" />
                 <h3 class="modal-title">Palju õnne! <br>Oled edukalt läbinud ülesanded :)</h3>
+                <br>
+                <button id="goHome">Lõpeta</button>
+            </div>
             </div>
 
 <script type="text/javascript">
 
     $('#goHome').click(function () {
-        session_destroy();
-        header('Location: welcome');
-        exit();
+        location.href="logout2";
     })
 
 </script>
