@@ -15,7 +15,8 @@ static function sendAnswer($user_id, $practical_test_answer, $practical_question
 
     update("logs", [
         'practical_test_answer'=>$practical_test_answer,
-        'practical_test_question_id'=>$practical_question_id], "user_id = $user_id");
+        'practical_test_question_id'=>$practical_question_id],
+        "user_id = $user_id AND logs_id=(SELECT MAX(logs_id) Where user_id= $user_id)");
     echo "success";
 }
 }
