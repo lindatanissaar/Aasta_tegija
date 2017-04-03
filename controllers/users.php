@@ -22,8 +22,10 @@ class users extends Controller
     }
 
     function AJAX_addAdmin()
-    {   // controls whether email and password are set
+    {
+        // controls whether email and password are set
         if (isset($_POST["email"]) && isset($_POST["password"])) {
+
             // uses Users class
             Users_Model::adminsAdd($_POST["email"], $_POST["password"]);
             echo "success";
@@ -32,7 +34,8 @@ class users extends Controller
 
 
     function AJAX_selectQuestions()
-    {   // makes query to database to get questions
+    {
+        // makes query to database to get questions
         $this->questions = get_all("SELECT * FROM questions ORDER BY question_id DESC");
 
     }
@@ -50,6 +53,7 @@ class users extends Controller
         $id = $_POST["id"];
         $text = $_POST["text"];
         $column_name = $_POST["column_name"];
+
         // makes query to database to update questions
         q("UPDATE questions SET " . $column_name . "='" . $text . "' WHERE question_id='" . $id . "'");
         echo 'Data Updated';
@@ -87,6 +91,7 @@ class users extends Controller
         $id = $_POST["id"];
         $text = $_POST["text"];
         $column_name = $_POST["column_name"];
+
         // makes query to database to update answers
         q("UPDATE answers SET " . $column_name . "='" . $text . "' WHERE answer_id='" . $id . "'");
         echo 'Data Updated';
@@ -122,6 +127,7 @@ class users extends Controller
         $id = $_POST["id"];
         $text = $_POST["text"];
         $column_name = $_POST["column_name"];
+
         // makes query to database to update practical questions
         q("UPDATE practical_test SET " . $column_name . "='" . $text . "' WHERE practical_id='" . $id . "'");
         echo 'Data Updated';
@@ -170,15 +176,17 @@ class users extends Controller
     }
 
 
-    // making queries from database
     function index()
     {
         // gets all questions from database
         $this->questions = get_all("SELECT * FROM questions ORDER BY question_id DESC");
+
         // gets all answers from database
         $this->answers = get_all("SELECT * FROM answers ORDER BY answer_id DESC");
+
         // gets all practical questions from database
         $this->practicals = get_all("SELECT * FROM practical_test ORDER BY practical_id DESC");
+
         // gets all log table from database
         $this->logs = get_all("SELECT * FROM logs ORDER BY logs_id DESC");
     }
