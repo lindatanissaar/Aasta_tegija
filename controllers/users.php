@@ -5,7 +5,7 @@
  * Date: 17.09.14
  * Time: 18:19
  */
-use Aastategija\Login as Adding_Model;
+use Aastategija\Users as Users_Model;
 class users extends Controller
 {
     public $requires_auth = true;
@@ -19,7 +19,7 @@ class users extends Controller
             $firstName = $_POST["firstName"];
             $lastName = $_POST["lastName"];
 
-            Adding_Model::enterantsAdd($pin, $firstName, $lastName);
+            Users_Model::enterantsAdd($pin, $firstName, $lastName);
             echo "success";
         }
     }
@@ -31,7 +31,7 @@ class users extends Controller
             $email = $_POST["email"];
             $password = $_POST["password"];
 
-            Adding_Model::adminsAdd($email, $password);
+            Users_Model::adminsAdd($email, $password);
             echo "success";
         }
     }

@@ -17,12 +17,4 @@ class questions extends Controller
     {
         echo "success";
     }
-
-
-    function POST_index()
-    {
-        echo "\$_POST:<br>";
-        var_dump($_POST);
-    }
-
 }

@@ -2,14 +2,14 @@
 /**
  * Created by PhpStorm.
  * User: Linnu
- * Date: 02.04.2017
- * Time: 15:14
+ * Date: 03.04.2017
+ * Time: 9:28
  */
 
 namespace Aastategija;
 
 
-class Login
+class Users
 {
     static function enterantsAdd($firstName, $lastName, $pin){
         insert('users', [
@@ -18,7 +18,7 @@ class Login
             'pin' => $pin
         ]);
 
-}
+    }
 
     static function adminsAdd($email, $password){
         // Hash the password
@@ -31,3 +31,5 @@ class Login
         ]);
     }
 }
+
+
