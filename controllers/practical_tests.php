@@ -12,10 +12,6 @@ class practical_tests extends Controller
 
     }
 
-
-    /**
-     *
-     */
     function AJAX_practicalTestAnswer()
     {
             $user_id = $_SESSION["user_id"];

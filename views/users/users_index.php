@@ -140,7 +140,7 @@
 
 
                     // making $.post query
-                    $.post("users/addingEnterants", {
+                    $.post("users/addEnterant", {
                         firstName: firstName,
                         lastName: lastName,
                         pin: pin
@@ -199,7 +199,7 @@
 
 
                     // make $.post query
-                    $.post("users/addingAdmins", {
+                    $.post("users/addAdmin", {
                         email: email,
                         password: password
                     }).done(function (data) {
@@ -259,7 +259,7 @@
                 $(document).on('click', '#btn_add2', function () {
                     var text = $('#text').text();
                     $.ajax({
-                        url: "users/insertingQuestions",
+                        url: "users/insertQuestion",
                         method: "POST",
                         data: {text: text},
                         dataType: "text",
@@ -273,7 +273,7 @@
                 // make $.ajax POST query
                 function edit_data(id, text, column_name) {
                     $.ajax({
-                        url: "users/editingQuestions",
+                        url: "users/editQuestion",
                         method: "POST",
                         data: {id: id, text: text, column_name: column_name},
                         dataType: "text",
@@ -296,7 +296,7 @@
                     var id = $(this).data("id3");
                     if (confirm("Are you sure you want to delete this?")) {
                         $.ajax({
-                            url: "users/deletingQuestions",
+                            url: "users/deleteQuestion",
                             method: "POST",
                             data: {id: id},
                             dataType: "text",
@@ -390,7 +390,7 @@
 
                     // make $.ajax POST query
                     $.ajax({
-                        url: "users/insertingAnswers",
+                        url: "users/insertAnswer",
                         method: "POST",
                         data: {question_id: question_id, answer_text: answer_text, answer: answer},
                         dataType: "text",
@@ -404,7 +404,7 @@
                 // make $.ajax POST query
                 function edit_data(id, text, column_name) {
                     $.ajax({
-                        url: "users/editingAnswers",
+                        url: "users/editAnswer",
                         method: "POST",
                         data: {id: id, text: text, column_name: column_name},
                         dataType: "text",
@@ -440,7 +440,7 @@
                     var id = $(this).data("id4");
                     if (confirm("Are you sure you want to delete this?")) {
                         $.ajax({
-                            url: "users/deletingAnswers",
+                            url: "users/deleteAnswer",
                             method: "POST",
                             data: {id: id},
                             dataType: "text",
@@ -511,7 +511,7 @@
 
                     // make $.ajax POST query
                     $.ajax({
-                        url: "users/insertingPractical",
+                        url: "users/insertPractical",
                         method: "POST",
                         data: {practical_text: practical_text},
                         dataType: "text",
@@ -525,7 +525,7 @@
                 // make $.ajax POST query
                 function edit_data(id, text, column_name) {
                     $.ajax({
-                        url: "users/editingPractical",
+                        url: "users/editPractical",
                         method: "POST",
                         data: {id: id, text: text, column_name: column_name},
                         dataType: "text",
@@ -547,7 +547,7 @@
                     var id = $(this).data("id3");
                     if (confirm("Are you sure you want to delete this?")) {
                         $.ajax({
-                            url: "users/deletingPractical",
+                            url: "users/deletePractical",
                             method: "POST",
                             data: {id: id},
                             dataType: "text",
@@ -666,7 +666,7 @@
 
                     // make $.ajax POST query
                     $.ajax({
-                        url: "users/insertingRanking",
+                        url: "users/insertRanking",
                         method: "POST",
                         data: {
                             PIN: PIN,
@@ -686,7 +686,7 @@
                 // make $.ajax POST query
                 function edit_data(id, text, column_name) {
                     $.ajax({
-                        url: "users/editingRanking",
+                        url: "users/editRanking",
                         method: "POST",
                         data: {id: id, text: text, column_name: column_name},
                         dataType: "text",
@@ -735,7 +735,7 @@
                     var id = $(this).data("id6");
                     if (confirm("Are you sure you want to delete this?")) {
                         $.ajax({
-                            url: "users/deletingRanking",
+                            url: "users/deleteRanking",
                             method: "POST",
                             data: {id: id},
                             dataType: "text",
