@@ -14,9 +14,9 @@ class users extends Controller
     function AJAX_addEnterant()
     {
         // controls whether pin, firstName, and lastName are set
-        if (isset($_POST["pin"]) && isset($_POST["firstName"]) && isset($_POST["lastName"])) {
+        if (isset($_POST["firstName"]) && isset($_POST["lastName"]) && isset($_POST["pin"])) {
             // uses Users class
-            Users_Model::enterantsAdd($_POST["pin"], $_POST["firstName"], $_POST["lastName"]);
+            Users_Model::enterantsAdd($_POST["firstName"], $_POST["lastName"], $_POST["pin"]);
             echo "success";
         }
     }
@@ -67,14 +67,12 @@ class users extends Controller
     }
 
 
-
     function AJAX_selectAnswers()
     {
         // makes query to database to get answers
         $this->answers = get_all("SELECT * FROM answers ORDER BY answer_id DESC");
 
     }
-
 
 
     function AJAX_insertAnswer()
@@ -175,7 +173,6 @@ class users extends Controller
         echo 'Data Deleted';
     }
 
-
     function index()
     {
         // gets all questions from database
@@ -189,5 +186,8 @@ class users extends Controller
 
         // gets all log table from database
         $this->logs = get_all("SELECT * FROM logs ORDER BY logs_id DESC");
+
+        //$this->rankings = get_all("SELECT user_id, questions_result, practical_test_points, questions_result + practical_test_points AS TOTAL FROM logs ORDER BY TOTAL DESC");
+        $this->rankings = get_all("SELECT CONCAT(firstName,' ', lastName) AS name, questions_result, practical_test_points, questions_result + practical_test_points AS TOTAL FROM logs, users WHERE logs.user_id = users.user_id ORDER BY TOTAL DESC");
     }
-} 
+}

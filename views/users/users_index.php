@@ -86,6 +86,14 @@
                 $("#ranking").toggle();
             });
         });
+
+
+        // toggle ranking_right table when clicked on heading
+        $(document).ready(function () {
+            $("#ranking_right_OnClick").click(function () {
+                $("#ranking_right").toggle();
+            });
+        });
     </script>
 
 
@@ -748,7 +756,28 @@
             });
         </script>
 
+        <h3 align="center" id="ranking_right_OnClick">Pingerida</h3><br/>
+        <div class="table-responsive" id="ranking_right">
+                <div class="table-responsive">
+                    <table class="table table-bordered" width="80%">
+                        <tr>
+                            <th width="20%">Nimi</th>
+                            <th width="30%">Teoreetiline tulemus</th>
+                            <th width="30%">Praktiline tulemus</th>
+                            <th width="20%">Kokku</th>
+                        </tr>
 
-    </div>
+                        <?php foreach ($rankings as $ranking): ?>
+                            <tr>
+                                <td><?= $ranking['name'] ?></td>
+                                <td><?= $ranking['questions_result'] ?></td>
+                                <td><?= $ranking['practical_test_points'] ?></td>
+                                <td><?= $ranking['TOTAL'] ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </table>
+
+                </div>
+        </div>
 
 <?php endif; ?>
