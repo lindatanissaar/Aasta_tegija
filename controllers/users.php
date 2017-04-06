@@ -185,7 +185,7 @@ class users extends Controller
         $this->practicals = get_all("SELECT * FROM practical_test ORDER BY practical_id DESC");
 
         // gets all log table from database
-        $this->logs = get_all("SELECT * FROM logs ORDER BY logs_id DESC");
+        $this->logs = get_all("SELECT * FROM logs JOIN users USING (user_id) ORDER BY logs_id DESC");
 
         //$this->rankings = get_all("SELECT user_id, questions_result, practical_test_points, questions_result + practical_test_points AS TOTAL FROM logs ORDER BY TOTAL DESC");
         $this->rankings = get_all("SELECT CONCAT(firstName,' ', lastName) AS name, questions_result, practical_test_points, questions_result + practical_test_points AS TOTAL FROM logs, users WHERE logs.user_id = users.user_id ORDER BY TOTAL DESC");

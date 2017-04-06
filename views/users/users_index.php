@@ -589,7 +589,7 @@
                             <tr>
                                 <td><?= $log['logs_id'] ?></td>
                                 <td class="PIN" data-id1="<?= $log['logs_id']; ?>"
-                                    contenteditable><?= $log["PIN"]; ?></td>
+                                    contenteditable><?= $log["pin"]; ?></td>
                                 <td class="questions_result" data-id2="<?= $log['logs_id']; ?>"
                                     contenteditable><?= $log["questions_result"]; ?></td>
                                 <td class="practical_test_question_id" data-id3="<?= $log['logs_id']; ?>"

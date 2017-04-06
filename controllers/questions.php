@@ -12,7 +12,6 @@ class questions extends Controller
         $this->questions = Q::get();
     }
 
-
     function success()
     {
         echo "success";

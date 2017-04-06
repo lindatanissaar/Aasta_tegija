@@ -46,8 +46,8 @@ function q($sql, & $query_pointer = NULL, $debug = FALSE)
     }
     $query_pointer = mysqli_query($db, $sql) or db_error_out();
     switch (substr($sql, 0, 6)) {
-           case 'UPDA':
-            exit("q($sql): Please don't use q() for UPDATEs, use update() instead.");
+//           case 'UPDA':
+//            exit("q($sql): Please don't use q() for UPDATEs, use update() instead.");
         default:
             return mysqli_affected_rows($db);
     }
