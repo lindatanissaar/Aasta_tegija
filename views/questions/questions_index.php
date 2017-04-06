@@ -34,26 +34,25 @@
     <br/>
     <br/>
     <br/><br/>
-    <form action='practical_tests' method='post' id='quizForm'>
+    <form action='process' method='post' id='quizForm'>
         <ol>
-            <?php foreach (array_slice($questions, 0, 10) as $question_id => $question): ?>
+            <?php foreach ($questions as $question_id => $question): ?>
 
                 <li>
                     <h3><?= $question['text'] ?> </h3>
 
                     <?php foreach ($question['answers'] as $answer): ?>
                         <div>
-                            <input type='radio' name='answers[<?= $question_id ?>]' id='answernumber' value='<?= $answer['id'] ?>'/>
+                            <input type='radio' name='answers[<?= $question_id ?>]' id='answernumber'
+                                   value='<?= $answer['id'] ?>'/>
                             <label for='answerOneA'> <?= $answer['text'] ?> </label>
                         </div>
                     <?php endforeach ?>
-
                 </li>
 
             <?php endforeach ?>
         </ol>
-        <input type="submit" id="btnSubmit" class="btn btn-primary btn-block" onClick="return validate()"
-               value="Edasta!">
+        <input type="submit" id="btnSubmit" class="btn btn-primary btn-block" value="Edasta!">
 </div>
 
 </body>

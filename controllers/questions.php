@@ -7,6 +7,7 @@ class questions extends Controller
     function index()
     {
         $this->questions = Q::get();
+        ($this->questions);
     }
     function success()
     {
